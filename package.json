@@ -6,11 +6,20 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "hero": "node install.js"
   },
   "dependencies": {
+    "@heroui/avatar": "^2.2.12",
+    "@heroui/button": "^2.2.16",
+    "@heroui/kbd": "^2.2.12",
+    "@heroui/navbar": "^2.2.14",
+    "@heroui/react": "^2.7.5",
     "@heroui/system": "^2.4.12",
     "@heroui/theme": "^2.4.12",
+    "@tabler/icons-react": "^3.31.0",
+    "@tanstack/react-query": "^5.67.2",
+    "motion": "^12.4.10",
     "next": "15.2.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

@@ -1,8 +1,14 @@
-import React from 'react';
+import {Chart} from "@/components/charts";
+import {Navbar} from "@/components/navbar";
+import {ApiCard} from "@/components/apiCards";
+
 
 const Home = () => {
     return (
-        <div className={"w-full h-screen "}>
+        <div className={"w-full h-full"}>
+            <Navbar/>
+            <ApiCard/>
+            <Chart/>
         </div>
     );
 };
