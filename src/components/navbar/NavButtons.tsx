@@ -4,7 +4,7 @@ import {Button} from "@heroui/button";
 import {Badge} from "@heroui/badge";
 import {IconBell, IconMail} from "@tabler/icons-react";
 import {LogoutIcon} from "@/components/ui/LogoutIcon";
-import {ButtonDataType} from "&/components/navbar/NavButtons";
+import {ButtonDataType} from "&/components/navbar/navButtons";
 import {useState} from "react";
 
 const ButtonData: ButtonDataType[] = [
@@ -27,8 +27,8 @@ export const NavButtons = () => {
     return (
         <div className={"w-auto px-2 flex gap-2"}>
             {buttons.map(({button, badge, icon: {Icon, iconClassName}}, index) => (
-                <Button isIconOnly={true} variant={button.variant} className={`text-gray-400 group ${button.className}`} key={index}>
-                    <Badge color={badge.color} content={badge.content}>
+                <Button isIconOnly={true}  variant={button.variant} className={`text-gray-400 group ${button.className}`} key={index}>
+                    <Badge  showOutline={false} color={badge.color} content={badge.content}>
                         <Icon size={20} stroke={2} className={iconClassName}/>
                     </Badge>
                 </Button>

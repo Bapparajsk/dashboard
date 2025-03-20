@@ -17,6 +17,10 @@
 /.next/
 /out/
 
+# edtor
+/.vscode
+/.idea
+
 # production
 /build
 

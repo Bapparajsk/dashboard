@@ -37,7 +37,7 @@ export const ApiCard = () => {
             />
             <Card
                 Icon={IconCloudComputing}
-                title={"Api"}
+                title={"Api Call"}
                 status={"+98.7% from last hour"}
                 value={
                     <div className={"flex gap-1"}>

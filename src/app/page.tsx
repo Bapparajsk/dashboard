@@ -1,14 +1,14 @@
-import {Chart} from "@/components/charts";
 import {Navbar} from "@/components/navbar";
 import {ApiCard} from "@/components/apiCards";
+import {UserList} from "@/components/user";
 
 
 const Home = () => {
     return (
-        <div className={"w-full h-full"}>
-            <Navbar/>
-            <ApiCard/>
-            <Chart/>
+        <div className="flex flex-col h-full">
+            <Navbar />
+            <ApiCard />
+            <UserList />
         </div>
     );
 };

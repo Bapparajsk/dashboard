@@ -31,8 +31,8 @@ export default function RootLayout({
       <Providers>
         <div className={"flex"}>
           <Sidebar />
-          <main className={"flex-1 w-full h-screen overflow-y-auto p-2"}>
-              <div className={"w-full h-full border border-gray-600 rounded-2xl"}>
+          <main className={"flex-1 w-full h-screen p-2"}>
+              <div className={"w-full h-full border border-gray-600 overflow-hidden rounded-2xl"}>
                   {children}
               </div>
           </main>
