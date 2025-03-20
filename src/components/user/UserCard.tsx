@@ -1,8 +1,7 @@
 import * as user from "@/components/ui/User";
 import {UserCardProps} from "&/components/user/userCard";
 import {cn} from "@heroui/react";
-import {Button} from "@heroui/button";
-import {IconMailShare} from "@tabler/icons-react";
+import {IconMail} from "@tabler/icons-react";
 
 export const UserCard = ({ name, description, isEmailVerified, idx }:UserCardProps) => {
     return (
@@ -27,12 +26,12 @@ export const UserCard = ({ name, description, isEmailVerified, idx }:UserCardPro
                     }}
                 />
                 <div className={"flex items-center justify-center"}>
-                    <Button isIconOnly={true} className={"group"}>
-                        <IconMailShare
-                            className={"text-gray-400 group-hover:text-blue-500"}
-                            size={25}
-                        />
-                    </Button>
+                    <div className={"px-2 py-1 relative border rounded-xl border-gray-600"}>
+                        <IconMail color={"blue"}/>
+                        <div className={"absolute w-5 h-5 -top-1 right-0 bg-primary-400 flex items-center justify-center rounded-full"}>
+                            <span className={"font-semibold text-[12px]"}>7</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
