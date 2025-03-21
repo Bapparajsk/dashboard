@@ -1,6 +1,7 @@
 export interface UserCardProps {
+    id: number;
     name: string;
     description?: string;
     isEmailVerified?: boolean;
-    idx: number
+    online?: boolean;
 }

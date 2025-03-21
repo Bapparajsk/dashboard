@@ -1,23 +1,13 @@
-import {RenderUserProps} from "&/components/user/renderUser";
-import {useUserTab} from "@/hooks/List";
+import {useSelectedUser, useUserTab} from "@/hooks/List";
 import {Profile} from "@/components/user/render/Profile";
 import { AnimatePresence, motion } from "motion/react";
 import {Emails} from "@/components/user/render/Emails";
 import {SendEmail} from "@/components/user/render/SendEmail";
 
-export const RenderUser = ({ user }: RenderUserProps) => {
+export const RenderUser = () => {
 
     const { userTab } = useUserTab();
-
-    if (user === undefined) {
-        return (
-            <div className={"w-full h-full flex items-center justify-center"}>
-                <div className={"text-gray-500"}>
-                    Please Select a user
-                </div>
-            </div>
-        );
-    }
+    const { selectedUser } = useSelectedUser();
 
     return (
         <AnimatePresence mode="wait" >
@@ -26,13 +16,17 @@ export const RenderUser = ({ user }: RenderUserProps) => {
                 initial={{ x: 500 }}
                 animate={{ x: 0 }}
                 exit={{ x: -500 }}
-                transition={{ duration: 0.2, type: "keyframes" }}
+                transition={{ duration: 0.3, type: "spring" }}
             >
-                {userTab === "profile" ? <Profile user={user}/> :
-                    userTab === "emails" ? <Emails/> : <SendEmail/>}
+                {selectedUser && userTab === "profile" ? <Profile /> :
+                userTab === "emails" ? <Emails /> :
+                userTab === "sendEmail" ? <SendEmail /> : <div className={"w-full h-full"}>
+                    <div className={"w-full h-[60vh] flex justify-center items-center"}>
+                        <div className={"text-3xl font-semibold text-gray-500"}>Select a user to view</div>
+                    </div>
+                </div>}
             </motion.div>
         </AnimatePresence>
-
     );
 };
 

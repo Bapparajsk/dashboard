@@ -1,9 +1,10 @@
 import { AvatarProps } from "@heroui/avatar";
+import {ReactNode} from "react";
 
 export interface UserProps {
     className?: string;
     onClick?: () => void;
-    name: string;
+    name: string | ReactNode;
     role: string;
     description: string;
     avatarProps?: AvatarProps

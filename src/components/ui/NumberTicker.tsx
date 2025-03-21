@@ -5,7 +5,7 @@ import {cn} from "@heroui/react";
 const tempNumbers = Array.from({length: 10}, (_, i) => i);
 
 interface NumberTickerProps {
-    value: string;
+    value: string | number;
     size?: "sm" | "md";
     className?: string;
 }
@@ -13,6 +13,8 @@ interface NumberTickerProps {
 export const NumberTicker = ({ value, size = "md", className } : NumberTickerProps) => {
     const base = size === "sm" ? 24 : 32;
     const height = size === "sm" ? 5 : 7;
+
+    value = typeof value === "number" ? value.toString() : value;
 
     return (
         <div className={cn(`h-${height} flex overflow-hidden`, className)}>

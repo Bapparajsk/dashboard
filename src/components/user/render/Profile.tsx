@@ -1,20 +1,32 @@
+"use client";
+
 import Image from "next/image";
 import {Button} from "@heroui/button";
 import {
     IconCloudOff,
-    IconCreditCard,
     IconCreditCardOff,
     IconLock,
     IconMailShare,
     IconUserOff
 } from "@tabler/icons-react";
 import {NumberTicker} from "@/components/ui/NumberTicker";
-import {RenderUserProps, UserActionButtonProps} from "&/components/user/renderUser";
+import { UserActionButtonProps} from "&/components/user/renderUser";
 import {cn} from "@heroui/react";
+import {useGetUser} from "@/hooks/useUser";
+import {useSelectedUser} from "@/hooks/List";
 
-export const Profile = ({ user }: RenderUserProps) => {
+export const Profile = () => {
 
-    if (!user) return null;
+    const { selectedUser } = useSelectedUser();
+    const { user, loading_user } = useGetUser(selectedUser);
+
+    if (loading_user || !user) {
+        return (
+            <div className={"w-full h-[60vh] flex justify-center items-center"}>
+                <div className={"text-3xl font-semibold text-gray-500"}>Loading...</div>
+            </div>
+        );
+    }
 
     return (
         <div className={"w-full h-full flex flex-col"}>
@@ -31,7 +43,7 @@ export const Profile = ({ user }: RenderUserProps) => {
                 </div>
                 <div className={"w-full h-20 relative"}>
                     <div className={"absolute -top-12 left-4 w-32 h-32 "}>
-                        <div className={"w-full h-full overflow-hidden rounded-full border-5 border-primary-500"}>
+                        <div className={cn("w-full h-full overflow-hidden rounded-full border-5", user.online ? "border-primary-500" : "border-black")}>
                             <Image
                                 width={"1000"}
                                 height={"1000"}
@@ -64,9 +76,17 @@ export const Profile = ({ user }: RenderUserProps) => {
             <div className={"w-full flex px-3 border-b border-gray-600"}>
                 <div className={"w-1/2 border-r border-gray-600 py-2"}>
                     <div className={"text-center"}>
+                        <div className={"text-xl font-semibold text-gray-500"}>Post Reading</div>
+                        <div className={"text-2xl flex justify-center text-primary-500"}>
+                            <NumberTicker value={3}/>
+                        </div>
+                    </div>
+                </div>
+                <div className={"w-1/2 py-2 border-r border-gray-600"}>
+                    <div className={"text-center"}>
                         <div className={"text-xl font-semibold text-gray-500"}>Friends</div>
                         <div className={"text-2xl flex justify-center"}>
-                            <NumberTicker value={"3293"}/>
+                            +<NumberTicker value={user.postCount}/>
                         </div>
                     </div>
                 </div>
@@ -74,20 +94,12 @@ export const Profile = ({ user }: RenderUserProps) => {
                     <div className={"text-center"}>
                         <div className={"text-xl font-semibold text-gray-500"}>Posts</div>
                         <div className={"text-2xl flex justify-center"}>
-                            <NumberTicker value={"3293"}/>
+                            +<NumberTicker value={user.friendCount}/>
                         </div>
                     </div>
                 </div>
             </div>
             <div className={"w-full h-full px-2 py-2 flex flex-col gap-2"}>
-                <UserActionButton
-                    label={
-                        <p className={"flex gap-1 "}>
-                            <span>New Post Upload Reading :</span> <NumberTicker className={"text-gray-300"} value={"3"} size={"sm"}/>
-                        </p>
-                    }
-                    Icon={IconCreditCard}
-                />
                 <UserActionButton label={"Block Upload Post"} Icon={IconCreditCardOff} border={"warning"}/>
                 <UserActionButton label={"Block"} Icon={IconUserOff} border={"danger"}/>
                 <UserActionButton label={"Block API"} Icon={IconCloudOff} border={"danger"}/>

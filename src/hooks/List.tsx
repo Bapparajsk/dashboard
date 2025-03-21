@@ -12,7 +12,7 @@ export const useListTab = () => {
 };
 
 export const useUserTab = () => {
-    const [userTab, setUserTab] = useQueryState("user-tab", { defaultValue: "" });
+    const [userTab, setUserTab] = useQueryState("user-tab", { defaultValue: "profile" });
 
     const setUserTabName = (name: Key) => {
         setUserTab(name as string).catch(console.log);
@@ -20,3 +20,12 @@ export const useUserTab = () => {
     return { userTab, setUserTabName };
 };
 
+export const useSelectedUser = () => {
+    const [selectedUser, setSelectedUser] = useQueryState("selected-user", { defaultValue: "" });
+
+    const setSelectedUserId = (id: string) => {
+        setSelectedUser(id).catch(console.log);
+    };
+
+    return { selectedUser, setSelectedUserId };
+};

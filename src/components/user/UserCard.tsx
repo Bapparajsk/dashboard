@@ -3,7 +3,7 @@ import {UserCardProps} from "&/components/user/userCard";
 import {cn} from "@heroui/react";
 import {IconMail} from "@tabler/icons-react";
 
-export const UserCard = ({ name, description, isEmailVerified, idx }:UserCardProps) => {
+export const UserCard = ({ name, description, isEmailVerified, id, online }:UserCardProps) => {
     return (
         <div className={"w-full h-fit flex items-center justify-center mb-2"}>
             <div
@@ -12,16 +12,16 @@ export const UserCard = ({ name, description, isEmailVerified, idx }:UserCardPro
                     isEmailVerified ?  "hover:border-success-500" : "hover:border-warning-500",
                     "hover:scale-[1.015]"
                 )}
-                accessKey={idx.toString()}
+                accessKey={id.toString()}
             >
                 <user.UserCard
-                    name={name}
+                    name={isEmailVerified ? name : < >{name} : <span className={"text-danger-400"}>Not Verified</span></>}
                     role={"user"}
                     description={description ? "@" + description : "description"}
                     avatarProps={{
                         alt: "User Avatar",
-                        isBordered: true,
-                        color: isEmailVerified ? "success" : "warning",
+                        isBordered: online,
+                        color: online ? "primary" : "default",
                         size: "sm",
                     }}
                 />
