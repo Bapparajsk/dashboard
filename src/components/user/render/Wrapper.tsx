@@ -20,21 +20,34 @@ export const Wrapper = () => {
     };
 
     return (
-        <div className={"w-full h-full"}>
-            <div className={"w-full h-fit p-3 border-b border-gray-600"}>
-                {loading_user ? <Emp/> : <UserCard
-                    name={user?.isEmailVerified ? user?.name : < >{user?.name} : <span
-                        className={"text-danger-400"}>Not Verified</span></>}
-                    role={"user"}
-                    description={user?.description ? "@" + user?.description : "description"}
-                    avatarProps={{
-                        alt: "User Avatar",
-                        isBordered: user?.online,
-                        color: user?.online ? "primary" : "default",
-                        size: "sm",
-                    }}
-                />}
+        <div className="w-full h-full flex flex-col">
+            {/* User Section */}
+            <div className="w-full h-fit p-3 border-b border-gray-600 flex items-center">
+                {loading_user ? (
+                    <Emp />
+                ) : (
+                    <UserCard
+                        name={
+                            user?.isEmailVerified ? (
+                                user?.name
+                            ) : (
+                                <>
+                                    {user?.name} : <span className="text-danger-400">Not Verified</span>
+                                </>
+                            )
+                        }
+                        role="user"
+                        description={user?.description ? "@" + user?.description : "description"}
+                        avatarProps={{
+                            alt: "User Avatar",
+                            isBordered: user?.online,
+                            color: user?.online ? "primary" : "default",
+                            size: "sm",
+                        }}
+                    />
+                )}
             </div>
+
             <AnimatePresence mode={"wait"}>
                 <motion.div
                     key={userTab}
@@ -42,10 +55,17 @@ export const Wrapper = () => {
                     animate={{ x: 0 }}
                     exit={{ x: -500 }}
                     transition={{ duration: 0.3, type: "spring" }}
+                    className={"w-full h-full overflow-y-scroll scrollbar-hide"}
                 >
                     {tabComponents[userTab as keyof typeof tabComponents]}
                 </motion.div>
             </AnimatePresence>
+
         </div>
+
     );
 };
+
+
+
+

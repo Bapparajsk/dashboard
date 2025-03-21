@@ -14,6 +14,7 @@ const UserContext = createContext<UserContextType>({
 export const UserProvider = ({children} : {children: ReactNode}) => {
 
     const [user, setUser] = useState<UserType | null>(null);
+
     const [loading_user, setLoadingUser] = useState(true);
     const { selectedUserId } = useSelectedUser();
 

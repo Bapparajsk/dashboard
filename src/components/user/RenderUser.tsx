@@ -16,6 +16,7 @@ export const RenderUser = () => {
                 animate={{ x: 0 }}
                 exit={{ x: -500 }}
                 transition={{ duration: 0.3, type: "spring" }}
+                className={"w-full h-full"}
             >
                 {selectedUserId && userTab === "profile" ? <Profile /> :
                     <Wrapper/>}

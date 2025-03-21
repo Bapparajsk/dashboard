@@ -63,8 +63,8 @@ export const Profile = () => {
                 }
                 <div className={"flex gap-2 mr-4 items-center justify-center"}>
                     {loading_user ? <>
-                            <Skeleton className={"size-9 rounded-md"}/>
-                            <Skeleton className={"size-9 rounded-md"}/>
+                            <Skeleton className={"size-8 rounded-md"}/>
+                            <Skeleton className={"size-8 rounded-md"}/>
                         </> : <>
                             <Button isIconOnly={true} size={"sm"} variant={"bordered"} color={"primary"}>
                                 <IconMailShare size={20}/>
