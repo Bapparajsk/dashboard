@@ -34,7 +34,7 @@ function generateTempUsers(count = 15) {
 }
 
 
-const tempUsers = generateTempUsers();
+export const tempUsers = generateTempUsers();
 
 export const useUser = () => {
     const [loading, setLoading] = useState(true);
@@ -49,25 +49,4 @@ export const useUser = () => {
     }, []);
 
     return { users, loading };
-};
-
-export const useGetUser = (id: string) => {
-
-    const [user, setUser] = useState<UserType | null>(null);
-    const [loading_user, setLoadingUser] = useState(true);
-
-    const fetchUserById = (id: string) => {
-        setLoadingUser(true);
-        setTimeout(() => {
-            const user = tempUsers.find(user => user.id.toString() === id);
-            setUser(user || null);
-            setLoadingUser(false);
-        }, 1000);
-    };
-
-    useEffect(() => {
-        fetchUserById(id);
-    }, [id]);
-
-    return { user, fetchUserById, loading_user };
 };

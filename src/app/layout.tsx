@@ -29,18 +29,18 @@ export default function RootLayout({
   return (
     <html lang="en" className={"dark"}>
       <body className={`${geistSans.variable} ${geistMono.variable} w-full max-w-[1900px] mx-auto h-screen font-poppins`}>
-      <Providers>
-          <NuqsAdapter>
-            <div className={"flex"}>
-              <Sidebar />
-              <main className={"flex-1 w-full h-screen p-2"}>
-                  <div className={"w-full h-full border border-gray-600 overflow-hidden rounded-2xl"}>
-                      {children}
-                  </div>
-              </main>
-            </div>
-          </NuqsAdapter>
-      </Providers>
+       <NuqsAdapter>
+          <Providers>
+                <div className={"flex"}>
+                  <Sidebar />
+                  <main className={"flex-1 w-full h-screen p-2"}>
+                      <div className={"w-full h-full border border-gray-600 overflow-hidden rounded-2xl"}>
+                          {children}
+                      </div>
+                  </main>
+                </div>
+          </Providers>
+       </NuqsAdapter>
       </body>
     </html>
   );

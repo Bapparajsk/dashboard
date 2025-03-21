@@ -21,11 +21,11 @@ export const useUserTab = () => {
 };
 
 export const useSelectedUser = () => {
-    const [selectedUser, setSelectedUser] = useQueryState("selected-user", { defaultValue: "" });
+    const [selectedUserId, setSelectedUser] = useQueryState("selected-user", { defaultValue: "" });
 
     const setSelectedUserId = (id: string) => {
         setSelectedUser(id).catch(console.log);
     };
 
-    return { selectedUser, setSelectedUserId };
+    return { selectedUserId, setSelectedUserId };
 };

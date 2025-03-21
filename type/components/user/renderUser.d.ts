@@ -6,9 +6,13 @@ export interface RenderUserProps {
 }
 
 interface UserType {
+    id: number;
     name: string;
     description: string;
     isEmailVerified: boolean;
+    online: boolean;
+    friendCount: number;
+    postCount: number;
 }
 
 export interface UserActionButtonProps {

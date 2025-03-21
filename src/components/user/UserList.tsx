@@ -22,22 +22,21 @@ const tabData = [
     },
     {
         Icon: IconMailShare,
-        title: "Send Email",
+        title: "Email",
         key: "sendEmail"
     },
     {
         Icon: IconBellShare,
         title: "Notifications",
-        key: "notifications"
+        key: "sendNotifications"
     }
 ];
-
 
 
 export const UserList = () => {
     const { userTab, setUserTabName } = useUserTab();
     const { users, loading } = useUser();
-    const { setSelectedUserId, selectedUser } = useSelectedUser();
+    const { setSelectedUserId, selectedUserId } = useSelectedUser();
 
     const userClickHandler = (e: MouseEvent<HTMLDivElement>) => {
         const target = e.target as HTMLDivElement;
@@ -63,7 +62,7 @@ export const UserList = () => {
             </div>
             <div className={"w-1/3 h-full border-l border-gray-600 py-2 flex flex-col gap-2 font-semibold"}>
                 <div className={"w-full py-2 border-b border-gray-600"}>
-                    <Tabs defaultSelectedKey={userTab} isDisabled={!selectedUser} onSelectionChange={setUserTabName} aria-label="user tabs" size={"sm"} variant={"underlined"}>
+                    <Tabs defaultSelectedKey={userTab} isDisabled={!selectedUserId} onSelectionChange={setUserTabName} aria-label="user tabs" size={"sm"} variant={"underlined"}>
                         {tabData.map((tab) => (
                             <Tab key={tab.key} title={
                                 <div className={"flex gap-2 items-center"}>

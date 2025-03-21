@@ -2,14 +2,19 @@ import * as user from "@/components/ui/User";
 import {UserCardProps} from "&/components/user/userCard";
 import {cn} from "@heroui/react";
 import {IconMail} from "@tabler/icons-react";
+import {useSelectedUser} from "@/hooks/List";
 
-export const UserCard = ({ name, description, isEmailVerified, id, online }:UserCardProps) => {
+export const UserCard = ({ name, description, isEmailVerified, id, online }: UserCardProps) => {
+
+    const { selectedUserId } = useSelectedUser();
+
     return (
         <div className={"w-full h-fit flex items-center justify-center mb-2"}>
             <div
                 className={cn(
                     "user-card w-full h-full flex items-center justify-between px-3 py-3 border border-gray-600 rounded-lg cursor-pointer transition-all duration-300",
                     isEmailVerified ?  "hover:border-success-500" : "hover:border-warning-500",
+                    selectedUserId === id.toString() && (isEmailVerified ?  "border-success-500" : "border-warning-500") ,
                     "hover:scale-[1.015]"
                 )}
                 accessKey={id.toString()}

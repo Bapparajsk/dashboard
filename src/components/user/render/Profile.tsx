@@ -12,13 +12,11 @@ import {
 import {NumberTicker} from "@/components/ui/NumberTicker";
 import { UserActionButtonProps} from "&/components/user/renderUser";
 import {cn} from "@heroui/react";
-import {useGetUser} from "@/hooks/useUser";
-import {useSelectedUser} from "@/hooks/List";
+import {useUserContext} from "@/context/userContext";
 
 export const Profile = () => {
 
-    const { selectedUser } = useSelectedUser();
-    const { user, loading_user } = useGetUser(selectedUser);
+    const { user, loading_user } = useUserContext();
 
     if (loading_user || !user) {
         return (

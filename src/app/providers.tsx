@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {useEmp} from "@/hooks/useEmp";
 import {useUser} from "@/hooks/useUser";
+import {UserProvider} from "@/context/userContext";
 
 declare module "@react-types/shared" {
     interface RouterConfig {
@@ -24,7 +25,9 @@ export function Providers({ children } :{ children: React.ReactNode }) {
     return (
         <HeroUIProvider navigate={router.push}>
             <QueryClientProvider client={queryClient}>
-                {children}
+                <UserProvider>
+                    {children}
+                </UserProvider>
             </QueryClientProvider>
         </HeroUIProvider>
     );

@@ -1,5 +1,6 @@
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 
 export {
-    motion
+    motion,
+    AnimatePresence
 };
