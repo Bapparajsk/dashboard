@@ -12,17 +12,16 @@ export const Wrapper = () => {
     const { user, loading_user } = useUserContext();
     const { userTab } = useUserTab();
 
-
     const tabComponents  = {
         "emails": <Emails/>,
         "sendEmail": <SendEmail/>,
-        "sendNotifications": <Notifications/>
+        "sendNotification": <Notifications/>
     };
 
     return (
         <div className="w-full h-full flex flex-col">
             {/* User Section */}
-            <div className="w-full h-fit p-3 border-b border-gray-600 flex items-center">
+            <div className="w-full h-auto py-2 px-3 border-b border-gray-600 flex items-center">
                 {loading_user ? (
                     <Emp />
                 ) : (
@@ -47,7 +46,6 @@ export const Wrapper = () => {
                     />
                 )}
             </div>
-
             <AnimatePresence mode={"wait"}>
                 <motion.div
                     key={userTab}

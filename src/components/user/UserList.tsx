@@ -5,7 +5,7 @@ import {Filter} from "@/components/user/Filter";
 import {Tab, Tabs} from "@heroui/react";
 import {useSelectedUser, useUserTab} from "@/hooks/List";
 import {useUser} from "@/hooks/useUser";
-import {IconBellShare, IconMail, IconMailShare, IconUserScan} from "@tabler/icons-react";
+import {IconBellShare, IconMailDown, IconMailShare, IconUserScan} from "@tabler/icons-react";
 import {UserCardSkeleton} from "@/components/skeletons/UserCard";
 import {MouseEvent} from "react";
 
@@ -16,19 +16,19 @@ const tabData = [
         key: "profile"
     },
     {
-        Icon: IconMail,
+        Icon: IconMailDown,
         title: "Emails",
         key: "emails"
     },
     {
         Icon: IconMailShare,
-        title: "Email",
+        title: "Send Email",
         key: "sendEmail"
     },
     {
         Icon: IconBellShare,
-        title: "Notifications",
-        key: "sendNotifications"
+        title: "Send Notification",
+        key: "sendNotification"
     }
 ];
 

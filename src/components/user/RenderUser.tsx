@@ -8,6 +8,10 @@ export const RenderUser = () => {
     const { userTab } = useUserTab();
     const { selectedUserId } = useSelectedUser();
 
+    if(!selectedUserId) return <div className={"w-full h-full flex items-center justify-center"}>
+        <h1 className="text-3xl font-semibold text-gray-500 text-center">Select a user to view</h1>
+    </div>;
+
     return (
         <AnimatePresence mode="wait" >
             <motion.div
