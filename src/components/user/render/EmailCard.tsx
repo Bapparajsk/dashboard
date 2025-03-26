@@ -54,8 +54,6 @@ export const EmailCard = ({ id, heading, description,  createdAt, isSolved } : E
         return description.substring(0, remainLen) + "...";
     };
 
-
-
     return (
         <div accessKey={id.toString()} className={"w-full h-fit p-2 mb-2 border border-gray-600 cursor-pointer rounded-md flex justify-between hover:border-gray-300 transition-all duration-300"}>
             <div accessKey={id.toString()} className={"flex h-full gap-1 items-center justify-center"}>

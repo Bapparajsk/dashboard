@@ -18,7 +18,6 @@ export const Profile = () => {
 
     const { user, loading_user } = useUserContext();
 
-
     return (
         <div className={"w-full h-full flex flex-col"}>
             <div className={"w-full h-fit"}>

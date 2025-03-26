@@ -42,7 +42,7 @@ export interface EmailType {
 
 export const Emails = () => {
 
-    const [emails, setEmails] = useState(generateTempEmails());
+    const [emails] = useState(generateTempEmails());
     const [openEmail, setOpenEmail] = useState<EmailType | null>(null);
 
     const handelEmailClick = (e: MouseEvent<HTMLDivElement>) => {

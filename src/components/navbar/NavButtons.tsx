@@ -22,7 +22,7 @@ const ButtonData: ButtonDataType[] = [
 
 export const NavButtons = () => {
 
-    const [buttons, setButtons] = useState(ButtonData);
+    const [buttons,] = useState(ButtonData);
 
     return (
         <div className={"w-auto px-2 flex gap-2"}>

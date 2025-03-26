@@ -43,7 +43,7 @@ export const useUser = () => {
     useEffect(() => {
         setTimeout(() => {
             setUsers(tempUsers);
-            console.log("add users");
+
             setLoading(false);
         }, 1000);
     }, []);

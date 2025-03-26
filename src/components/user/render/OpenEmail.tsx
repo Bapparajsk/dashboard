@@ -40,33 +40,9 @@ export const OpenEmail = ({ back, email }:OpenEmailProps) => {
                             <IconTrash size={18}/>
                         </Button>
                     </Tooltip>
-
                 </div>
             </div>
             <div className={"w-full overflow-y-auto p-3 text-sm text-gray-400 mb-[3.2rem]"}>
-                {email.description}
-                {email.description}
-                {email.description}
-                {email.description}
-                {email.description}
-                {email.description}
-                {email.description}
-                {email.description}
-                {email.description}
-                {email.description}
-                {email.description}
-                {email.description}
-                {email.description}
-                {email.description}
-                {email.description}
-                {email.description}
-                {email.description}
-                {email.description}
-                {email.description}
-                {email.description}
-                {email.description}
-                {email.description}
-                {email.description}
                 {email.description}
             </div>
         </div>

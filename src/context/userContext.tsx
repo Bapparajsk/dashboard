@@ -39,10 +39,10 @@ export const UserProvider = ({children} : {children: ReactNode}) => {
 };
 
 export const useUserContext = () => {
-    try {
-        return useContext(UserContext);
-    } catch (e) {
-        console.log(e);
-        throw new Error("useUserContext must be used within a UserProvider ");
+    const context = useContext(UserContext);
+    if (!context) {
+        throw new Error("useEmpContext must be used within a EmpProvider");
     }
+
+    return context;
 };

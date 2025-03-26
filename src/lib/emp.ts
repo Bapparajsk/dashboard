@@ -1,13 +1,13 @@
-import {EmpType} from "&/emp/emp";
+import {EmployeeType} from "&/context/empContext";
 
-const emp = {
+const emp : EmployeeType  = {
     name: "John",
     age: 30,
-    role: "Developer",
+    role: "admin",
     description: "A developer who loves to code",
 };
 
-export const getEmp = async () : Promise<EmpType> => {
+export const getEmp = async () : Promise<EmployeeType> => {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve(emp);

@@ -4,7 +4,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 import React from "react";
 import {Sidebar} from "@/components/sidebar";
-import { NuqsAdapter } from "nuqs/adapters/next/app";
+import {NuqsProvider} from "@/app/NuqsProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={"dark"}>
       <body className={`${geistSans.variable} ${geistMono.variable} w-full max-w-[1900px] mx-auto h-screen font-poppins`}>
-       <NuqsAdapter>
+       <NuqsProvider>
           <Providers>
                 <div className={"flex"}>
                   <Sidebar />
@@ -40,7 +40,7 @@ export default function RootLayout({
                   </main>
                 </div>
           </Providers>
-       </NuqsAdapter>
+       </NuqsProvider>
       </body>
     </html>
   );
