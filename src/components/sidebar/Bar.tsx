@@ -4,6 +4,9 @@ import {UserCard} from "@/components/ui/User";
 import {Emp} from "@/components/skeletons/Emp";
 import {RootUser} from "@/components/sidebar/RootUser";
 import {useEmpContext} from "@/context/empContext";
+import {SidebarButton} from "@/components/ui/SidebarButton";
+import {IconSettings, IconUserScan} from "@tabler/icons-react";
+import {DropDown} from "@/components/sidebar/DropDown";
 
 export default function Bar(){
 
@@ -18,6 +21,27 @@ export default function Bar(){
                     </div>
                 </div>
                 <RootUser/>
+                <div className={"px-3"}>
+                    <div className={"w-full h-full border-b border-gray-600 font-semibold pb-1"}>
+                        <DropDown
+                            selectionMode={"single"}
+                            itemList={[
+                                {
+                                    key: "user scan",
+                                    title: {label: "User", Icon: IconUserScan},
+                                    ariaLabel: "user scan",
+                                    children: (
+                                        <div className={"flex flex-col gap-2"}>
+                                            <SidebarButton Icon={IconUserScan} label={"profile"} link={"/profile"}/>
+                                            <SidebarButton Icon={IconSettings} label={"Setting"} link={"/setting"}/>
+                                        </div>
+                                    )
+                                },
+                            ]}
+                        />
+                    </div>
+
+                </div>
             </div>
         </div>
     );

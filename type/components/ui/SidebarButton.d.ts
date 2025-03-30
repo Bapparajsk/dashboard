@@ -4,5 +4,5 @@ export interface ButtonDataType {
     Icon: Icon;
     label: string;
     link: string;
-    color: "blue" | "green" | "purple" | "red";
+    isDanger?: boolean;
 }
