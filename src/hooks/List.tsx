@@ -4,7 +4,9 @@ import {Key} from "react";
 export const useListTab = () => {
     const [list, setList] = useQueryState("list-tab", { defaultValue: "" });
 
-    const setListName = (name: "users" | "emails") => {
+    const setListName = (name: Key) => {
+        if (typeof name !== "string") return;
+
         setList(name).catch(console.log);
     };
 
@@ -24,6 +26,7 @@ export const useSelectedUser = () => {
     const [selectedUserId, setSelectedUser] = useQueryState("selected-user", { defaultValue: "" });
 
     const setSelectedUserId = (id: string) => {
+        console.log("Selected User ID: ", id);
         setSelectedUser(id).catch(console.log);
     };
 

@@ -7,11 +7,11 @@ import {useEmpContext} from "@/context/empContext";
 import {SidebarButton} from "@/components/ui/SidebarButton";
 import {IconSettings, IconUserScan} from "@tabler/icons-react";
 import {DropDown} from "@/components/sidebar/DropDown";
+import BackButton from "@/components/ui/BackButton";
 
 export default function Bar(){
 
     const { emp, loading } = useEmpContext();
-
     return (
         <div className={"w-[340px] h-screen overflow-y-scroll scrollbar-hide p-2 transition-width duration-200 ease-in-out"}>
             <div className={"w-full h-full rounded-2xl border border-gray-600"}>
@@ -19,6 +19,7 @@ export default function Bar(){
                     <div className={"ml-2 flex items-center"}>
                         {loading ? <Emp/> : <UserCard role={emp?.role || "Emply"} name={emp?.name || "Emply"} description={emp?.description || "Emply"}/>}
                     </div>
+                    <BackButton/>
                 </div>
                 <RootUser/>
                 <div className={"px-3"}>

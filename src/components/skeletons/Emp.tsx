@@ -11,3 +11,29 @@ export const Emp = () => {
         </div>
     );
 };
+
+export const EmployeeCardSkeleton = ({count = 1}: {count?: number}) => {
+
+    const getSkeletons = () => {
+        return (
+            <div className={"w-full h-fit flex items-center justify-center mb-2 employee-card"}>
+                <div
+                    className={"user-card w-full h-full flex items-center justify-between px-3 py-3 border border-gray-600 rounded-lg cursor-pointer transition-all duration-300"}
+                >
+                    <Emp/>
+                    <Skeleton className={"w-24 h-8 rounded-md"}/>
+                </div>
+            </div>
+        )
+    }
+
+    return (
+        <>
+            {Array.from({ length: count }, (_, idx) => (
+                <div key={idx} className={"w-full h-fit"}>
+                    {getSkeletons()}
+                </div>
+            ))}
+        </>
+    );
+}

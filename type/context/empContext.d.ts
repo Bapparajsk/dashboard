@@ -1,3 +1,5 @@
+import {EmployeeCardProps} from "&/components/employee/EmployeeCard";
+
 export interface EmployeeType {
     name: string;
     age: number;
@@ -8,4 +10,5 @@ export interface EmployeeType {
 export interface EmpContextType {
     emp: EmployeeType | null;
     loading: boolean
+    fetchEmployees: ({page}: { page?: number }) => Promise<{ employees: EmployeeCardProps[]; nextPage: number | null }>;
 }

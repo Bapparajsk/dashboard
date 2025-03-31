@@ -1,3 +1,4 @@
+"use client";
 import * as user from "@/components/ui/User";
 import {UserCardProps} from "&/components/user/userCard";
 import {cn} from "@heroui/react";

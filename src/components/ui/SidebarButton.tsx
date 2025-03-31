@@ -4,20 +4,6 @@ import { Button } from "@heroui/button";
 import { ButtonDataType } from "&/components/ui/SidebarButton";
 import { cn } from "@heroui/react";
 
-const borderColors = {
-    blue: "hover:border-blue-500",
-    green: "hover:border-green-500",
-    purple: "hover:border-purple-500",
-    red: "hover:border-red-500",
-};
-
-const textColors = {
-    blue: "group-hover:text-blue-500",
-    green: "group-hover:text-green-500",
-    purple: "group-hover:text-purple-500",
-    red: "group-hover:text-red-500",
-};
-
 export const SidebarButton = ({ Icon, label, link, isDanger }: ButtonDataType) => {
 
     const transform = "transition-transform duration-300 ease-in-out";

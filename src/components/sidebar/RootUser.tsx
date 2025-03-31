@@ -8,22 +8,22 @@ const buttonData: ButtonDataType[] = [
     {
         Icon: IconUserCog,
         label: "Employees",
-        link: "/employees",
+        link: "/employee",
     },
     {
         Icon: IconUserPlus,
         label: "Add Employee",
-        link: "/employees/add",
+        link: "/employee",
     },
     {
         Icon: IconUserCode,
         label: "Employee Logs",
-        link: "/employees/logs",
+        link: "/employee",
     },
     {
         Icon: IconUserMinus,
         label: "Employee Remove",
-        link: "/employees/remove",
+        link: "/employee",
         isDanger: true,
     }
 ];
