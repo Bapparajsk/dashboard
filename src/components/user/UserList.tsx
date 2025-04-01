@@ -56,6 +56,7 @@ export const UserList = () => {
                         TabsProps={{
                             defaultSelectedKey: list,
                             onSelectionChange: setListName,
+                            size: "md",
                             tabs: [
                                 { key: "user", title: "Users", Icon: IconUsers },
                                 { key: "email", title: "Email", Icon: IconMail },

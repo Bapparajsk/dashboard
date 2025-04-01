@@ -11,4 +11,7 @@ export interface EmpContextType {
     emp: EmployeeType | null;
     loading: boolean
     fetchEmployees: ({page}: { page?: number }) => Promise<{ employees: EmployeeCardProps[]; nextPage: number | null }>;
+    selectedEmployee: number;
+    selectEmployee: (id: number) => void;
+    getSelectedEmployee: () => EmployeeCardProps | undefined;
 }

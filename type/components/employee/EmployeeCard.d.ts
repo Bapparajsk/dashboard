@@ -6,5 +6,7 @@ export interface EmployeeCardProps {
     isOnline?: boolean;
     lastOnline?: Date;
     isNew?: boolean;
-    targetClosest: string;
+    refUser?: string;
+    targetClosest?: string;
+    isSelected?: boolean;
 }

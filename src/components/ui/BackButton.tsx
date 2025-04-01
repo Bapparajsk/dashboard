@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import {Button} from "@heroui/button";
 import {IconHome} from "@tabler/icons-react";
 import {Tooltip} from "@heroui/tooltip";
+import {cn} from "@heroui/react";
 
 const BackButton = () => {
     const router = useRouter();
@@ -19,10 +20,10 @@ const BackButton = () => {
                 isIconOnly={true}
                 onPress={handleBack}
                 disabled={isDisabled}
-                variant={isDisabled ? "bordered" : "shadow"}
-                color={ isDisabled ? "default" : "primary" }
+                variant={"bordered"}
+                className={cn(!isDisabled && "border-gray-300")}
             >
-                <IconHome size={18}/>
+                <IconHome size={18} className={cn(isDisabled && "text-gray-500")}/>
             </Button>
         </Tooltip>
     );

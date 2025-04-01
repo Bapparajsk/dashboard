@@ -21,7 +21,7 @@ export const Filter = ({ InputProps, TabsProps, className }: FilterProps) => {
                     />
                 </div>
                 <Tabs
-                    size={"sm"}
+                    size={TabsProps?.size || "sm"}
                     defaultSelectedKey={TabsProps?.defaultSelectedKey}
                     aria-label="Tabs colors"
                     radius="md"

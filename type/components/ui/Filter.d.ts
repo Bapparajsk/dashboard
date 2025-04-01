@@ -11,6 +11,7 @@ export interface FilterProps {
     TabsProps?: {
         defaultSelectedKey?: string;
         onSelectionChange?: (key: Key) => void;
-        tabs: {key: string, title: string, Icon: Icon}[]
+        tabs: {key: string, title: string, Icon: Icon}[];
+        size?: "sm" | "md" | "lg";
     }
 }

@@ -16,7 +16,7 @@ const idTracker: IDTrackerType = {
 
 export const EmployeeList = () => {
     const [filter, setFilter] = useState<Key>("all"); // Store selected filter
-    const { fetchEmployees } = useEmpContext();
+    const { fetchEmployees, selectedEmployee, selectEmployee } = useEmpContext();
 
     const {
         data,
@@ -55,9 +55,9 @@ export const EmployeeList = () => {
 
     const employeeClickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
         const id = parentClickHandler({ e, ...idTracker });
-        console.log(`Employee ID: ${id}`);
-        if (!id) return;
 
+        if (!id) return;
+        selectEmployee(Number(id));
     };
 
     return (
@@ -91,6 +91,7 @@ export const EmployeeList = () => {
                                     key={idx}
                                     {...employee}
                                     targetClosest={idTracker.targetClosest}
+                                    isSelected={selectedEmployee === employee.id}
                                 />
                             ))}
                             <div ref={ref} className={"h-fit w-full flex items-center justify-center"}>
