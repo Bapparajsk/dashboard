@@ -3,7 +3,7 @@ import * as user from "@/components/ui/User";
 import {EmployeeCardProps} from "&/components/employee/EmployeeCard";
 import {dateFormat} from "@/lib/format";
 
-export const EmployeeCard = ({id, name, description, role, isOnline, lastOnline, isNew}: EmployeeCardProps) => {
+export const EmployeeCard = ({id, name, description, role, isOnline, lastOnline, isNew, targetClosest}: EmployeeCardProps) => {
 
     const createUserCardName = () => {
         if (!isNew) return name;
@@ -19,7 +19,7 @@ export const EmployeeCard = ({id, name, description, role, isOnline, lastOnline,
     };
 
     return (
-        <div className={"w-full h-fit flex items-center justify-center mb-2 employee-card"} data-id={id}>
+        <div className={`w-full h-fit flex items-center justify-center mb-2 ${targetClosest.substring(1)}`} data-id={id}>
             <div
                 className={cn(
                     "user-card w-full h-full flex items-center justify-between px-3 py-3 border border-gray-600 rounded-lg cursor-pointer transition-all duration-300",

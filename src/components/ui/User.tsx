@@ -14,7 +14,7 @@ export const UserCard = ({ className, name, role, description, avatarProps, onCl
             className={cn("cursor-pointer", className)}
             isFocusable={true}
             onClick={userClick}
-            name={<p className={"font-semibold"}>{name}</p>}
+            name={<div className={"font-semibold"}>{name}</div>}
             role={role}
             description={description}
             avatarProps={avatarProps}

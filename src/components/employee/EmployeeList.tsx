@@ -18,15 +18,6 @@ export const EmployeeList = () => {
     const [filter, setFilter] = useState<Key>("all"); // Store selected filter
     const { fetchEmployees } = useEmpContext();
 
-    const employeeClickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
-        const id = parentClickHandler({
-            e,
-            ...idTracker
-        });
-
-        if (!id) return;
-    };
-
     const {
         data,
         fetchNextPage,
@@ -62,9 +53,15 @@ export const EmployeeList = () => {
         return false;
     });
 
+    const employeeClickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
+        const id = parentClickHandler({ e, ...idTracker });
+        console.log(`Employee ID: ${id}`);
+        if (!id) return;
+
+    };
 
     return (
-        <div className={"w-full h-full pt-2 pl-2"}>
+        <div className={"w-full h-full pt-2"}>
             <div className={"h-full overflow-x-hidden overflow-y-auto scrollbar-hide"} onClick={employeeClickHandler}>
                 <Filter
                     className={"mb-2"}
@@ -85,14 +82,15 @@ export const EmployeeList = () => {
                         ]
                     }}
                 />
+
                 {
                     filteredEmployees.length > 0 ? (
-                        <div className={"grid grid-cols-1"}>
+                        <div className={"grid grid-cols-1 px-3"}>
                             {filteredEmployees.map((employee, idx) => (
                                 <EmployeeCard
                                     key={idx}
                                     {...employee}
-                                    // className={"employee-card"}
+                                    targetClosest={idTracker.targetClosest}
                                 />
                             ))}
                             <div ref={ref} className={"h-fit w-full flex items-center justify-center"}>
@@ -105,7 +103,6 @@ export const EmployeeList = () => {
                         </div>
                     )
                 }
-
             </div>
         </div>
     );
