@@ -12,11 +12,12 @@ import {
 import {NumberTicker} from "@/components/ui/NumberTicker";
 import { UserActionButtonProps} from "&/components/user/renderUser";
 import {cn, Skeleton} from "@heroui/react";
-import {useUserContext} from "@/context/userContext";
+import {useUserList} from "@/context/userListContext";
+
 
 export const Profile = () => {
 
-    const { user, loading_user } = useUserContext();
+    const { user, loading_user } = useUserList();
 
     return (
         <div className={"w-full h-full flex flex-col"}>

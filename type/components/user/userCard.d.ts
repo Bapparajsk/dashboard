@@ -4,4 +4,5 @@ export interface UserCardProps {
     description?: string;
     isEmailVerified?: boolean;
     online?: boolean;
+    isSelected?: boolean;
 }

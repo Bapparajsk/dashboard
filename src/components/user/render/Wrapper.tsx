@@ -1,22 +1,22 @@
 import {UserCard} from "@/components/ui/User";
 import {Emp} from "@/components/skeletons/Emp";
-import {useUserContext} from "@/context/userContext";
 import {useUserTab} from "@/hooks/List";
 import { AnimatePresence, motion } from "@/lib/motion";
 import {Emails} from "@/components/user/render/Emails";
 import {SendEmail} from "@/components/user/render/SendEmail";
 import {Notifications} from "@/components/user/render/Notifications";
+import {useUserList} from "@/context/userListContext";
+
+const tabComponents  = {
+    "emails": <Emails/>,
+    "sendEmail": <SendEmail/>,
+    "sendNotification": <Notifications/>
+};
 
 export const Wrapper = () => {
 
-    const { user, loading_user } = useUserContext();
     const { userTab } = useUserTab();
-
-    const tabComponents  = {
-        "emails": <Emails/>,
-        "sendEmail": <SendEmail/>,
-        "sendNotification": <Notifications/>
-    };
+    const { user, loading_user } = useUserList();
 
     return (
         <div className="w-full h-full flex flex-col">
@@ -58,9 +58,7 @@ export const Wrapper = () => {
                     {tabComponents[userTab as keyof typeof tabComponents]}
                 </motion.div>
             </AnimatePresence>
-
         </div>
-
     );
 };
 

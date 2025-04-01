@@ -8,7 +8,7 @@ export const EmployeeCard = ({id, name, description, role, isOnline, lastOnline,
     const createUserCardName = () => {
         return (
             <div className={"flex items-center font-semibold"}>
-                <p>{name}</p>
+                <p>{name} :</p>
                 {isNew && <div className={"rounded-md px-1 ml-1 h-fit bg-red-500 text-white text-[10px]"}>
                     <span>new Employee</span>
                 </div>}
@@ -24,7 +24,7 @@ export const EmployeeCard = ({id, name, description, role, isOnline, lastOnline,
             <div
                 className={cn(
                     "user-card w-full h-full flex items-center justify-between px-3 py-3 border border-gray-600 rounded-lg cursor-pointer transition-all duration-300",
-                    "hover:scale-[1.015] active:scale-[0.90]",
+                    "hover:scale-[1.015] active:scale-[0.95]",
                     isSelected && "scale-[1.015] border-blue-500 bg-blue-500/10",
                 )}
             >

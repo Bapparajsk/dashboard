@@ -4,10 +4,11 @@ import {EmployeeCard} from "./EmployeeCard";
 import {parentClickHandler} from "@/lib/clickHandler";
 import {IDTrackerType} from "&/components/employee/EmployeeList";
 import {useInfiniteQuery} from "@tanstack/react-query";
+import {useIntersection} from "@mantine/hooks";
 import {Filter} from "@/components/ui/Filter";
 import {EmployeeCardSkeleton} from "@/components/skeletons/Emp";
 import {useEmpContext} from "@/context/empContext";
-import {useIntersection} from "@mantine/hooks";
+
 
 const idTracker: IDTrackerType = {
     targetClosest: ".employee-card",

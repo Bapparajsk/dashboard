@@ -1,12 +1,13 @@
-import {useSelectedUser, useUserTab} from "@/hooks/List";
+import {useUserTab} from "@/hooks/List";
 import {Profile} from "@/components/user/render/Profile";
 import { AnimatePresence, motion } from "motion/react";
 import {Wrapper} from "@/components/user/render/Wrapper";
+import {useUserList} from "@/context/userListContext";
 
 export const RenderUser = () => {
 
     const { userTab } = useUserTab();
-    const { selectedUserId } = useSelectedUser();
+    const { selectedUserId } = useUserList();
 
     if(!selectedUserId) return <div className={"w-full h-full flex items-center justify-center"}>
         <h1 className="text-3xl font-semibold text-gray-500 text-center">Select a user to view</h1>
