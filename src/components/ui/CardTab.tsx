@@ -1,19 +1,18 @@
-import {Tab, Tabs} from "@heroui/react";
-import {CardTabProps} from "&/components/ui/CardTab";
+"use client";
 
-export const CardTab = ({ defaultSelectedKey, onSelectionChange, isDisabled, ariaLabel, tabs }: CardTabProps) => {
+import {Tab, Tabs, TabsProps} from "@heroui/react";
+import {TabDataType} from "&/components/user/userList";
+
+interface CardTabProps extends TabsProps {
+    items: TabDataType[];
+}
+
+export const CardTab = ({items, ...props} : CardTabProps) => {
     return (
-        <Tabs
-            defaultSelectedKey={defaultSelectedKey}
-            isDisabled={!isDisabled}
-            onSelectionChange={onSelectionChange}
-            aria-label={ariaLabel ?? "Card Tabs"}
-            size={"sm"}
-            variant={"underlined"}
-        >
-            {tabs.map(tab => (
+        <Tabs {...props}>
+            {items.map(tab => (
                 <Tab key={tab.key} title={
-                    <div className={"flex gap-2 items-center"}>
+                    <div className={"flex gap-1 items-center"}>
                         <tab.Icon size={20}/>
                         <span>{tab.title}</span>
                     </div>

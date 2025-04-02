@@ -1,19 +1,18 @@
+"use client";
 
-
+import React, {MouseEvent, useEffect} from "react";
 import {UserCardSkeleton} from "@/components/skeletons/UserCard";
 import {UserCard} from "@/components/user/UserCard";
 import {useIntersection} from "@mantine/hooks";
 import {useInfiniteQuery} from "@tanstack/react-query";
 import {useUserList} from "@/context/userListContext";
-import React, {MouseEvent, useEffect} from "react";
 import {Filter} from "@/components/ui/Filter";
 import {IconMail, IconUsers} from "@tabler/icons-react";
-import {useUserTab} from "@/hooks/List";
+import {parentClickHandler} from "@/lib/clickHandler";
 
 export const RenderUserList = () => {
 
-    const { fetchUsers, setListTabKeyName, listTabKey, setSelectedUserId } = useUserList();
-    const { setUserTabName } = useUserTab();
+    const { fetchUsers, setListTabKeyName, listTabKey, setSelectedUserId, selectedUserId } = useUserList();
 
     const {
         data,
@@ -43,20 +42,19 @@ export const RenderUserList = () => {
     }, [entry, isFetchingNextPage, fetchNextPage]);
 
     const userClickHandler = (e: MouseEvent<HTMLDivElement>) => {
-        const target = e.target as HTMLElement;
-        const mailIcon = target.closest(".user-card-mail-icon"); // Check if mail icon is clicked
-        const employeeCard = target.closest(".user-card"); // Check if card is clicked
 
-        if (mailIcon) {
-            const id = mailIcon.getAttribute("data-id");
-            if (id) {
-                setSelectedUserId(parseInt(id));
-                setUserTabName("sendEmail");
-            }
-        } else if (employeeCard) {
-            const id = employeeCard.getAttribute("data-id");
-            if (id) setSelectedUserId(parseInt(id));
-        }
+        const id = parentClickHandler({
+            e,
+            targetClosest: ".user-card",
+            attributeName: "data-id"
+        });
+
+        if (!id) return;
+
+        const idNum = parseInt(id);
+        if (selectedUserId === idNum) return; // Prevent re-fetching the same user
+        setSelectedUserId(idNum);
+
     };
 
     const users = data?.pages.flatMap((page) => page.users) || [];
@@ -77,12 +75,12 @@ export const RenderUserList = () => {
             />
             {
                 users.length > 0 ? (
-                    <div className={"grid grid-cols-1 px-2 pt-2"}>
+                    <div className={"grid grid-cols-1 px-3 pt-2"}>
                         {users.map((user, idx) => (
                             <UserCard
                                 key={idx}
                                 {...user}
-
+                                isSelected={selectedUserId === user.id}
                             />
                         ))}
                         <div ref={ref} className={"h-fit w-full flex items-center justify-center"}>

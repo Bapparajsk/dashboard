@@ -31,6 +31,7 @@ const UserListContext = createContext<UserListContextType | undefined>(undefined
 
 export const UserListProvider = ({ children }: {children: ReactNode}) => {
     const [listTabKey, setListTabKey] = useQueryState("list-tab", { defaultValue: "" });
+    const [userTab, setUserTab] = useQueryState("user-tab", { defaultValue: "" });
     const [selectedUserId, setSelectedUser] = useQueryState("selected-user", parseAsInteger.withDefault(0));
     const [user, setUser] = useState<UserType | null>(null);
     const [loading_user, setLoadingUser] = useState(true);
@@ -48,6 +49,11 @@ export const UserListProvider = ({ children }: {children: ReactNode}) => {
 
     const setSelectedUserId = (id: number) => {
         setSelectedUser(id).catch(console.log);
+    };
+
+    const setUserTabName = (key: Key) => {
+        if (typeof key !== "string") return;
+        setUserTab(key).catch(console.log);
     };
 
     const fetchUsers = async ({page = 1} : {page?: number}): Promise<{ users: UserType[]; nextPage: number | null }> => {
@@ -91,6 +97,8 @@ export const UserListProvider = ({ children }: {children: ReactNode}) => {
             fetchUserById,
             selectedUserId,
             setSelectedUserId,
+            userTab,
+            setUserTabName
         }}>
             {children}
         </UserListContext.Provider>

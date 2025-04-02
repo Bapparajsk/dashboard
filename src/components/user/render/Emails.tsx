@@ -1,3 +1,5 @@
+"use client";
+
 import {useState, MouseEvent} from "react";
 import {EmailCard} from "@/components/user/render/EmailCard";
 import {OpenEmail} from "@/components/user/render/OpenEmail";

@@ -19,4 +19,6 @@ export interface UserListContextType {
     fetchUserById: (id?: number | undefined) => Promise<UserType | null>;
     selectedUserId: number;
     setSelectedUserId: (id: number) => void;
+    userTab: string;
+    setUserTabName: (key: Key) => void;
 }

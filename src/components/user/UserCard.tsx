@@ -33,8 +33,7 @@ export const UserCard = ({ name, description, isEmailVerified, id, online, isSel
                 />
                 <div className={"flex items-center justify-center"}>
                     <div
-                        className={"px-2 py-1 relative border rounded-xl border-gray-600 cursor-pointer user-card-mail-icon"}
-                        data-id={id}
+                        className={"px-2 py-1 relative border rounded-xl border-gray-600 cursor-pointer"}
                     >
                         <IconMail color={"blue"}/>
                         <div className={"absolute w-5 h-5 -top-1 right-0 bg-primary-400 flex items-center justify-center rounded-full"}>
