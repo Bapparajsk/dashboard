@@ -9,4 +9,5 @@ export interface EmployeeCardProps {
     refUser?: string;
     targetClosest?: string;
     isSelected?: boolean;
+    logCount?: number;
 }

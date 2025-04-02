@@ -11,16 +11,16 @@ export const dateFormat = (date: Date) => {
     if (diffInSeconds < 60) {
         return "just now";
     } else if (diffInMinutes < 60) {
-        return `${diffInMinutes} minutes ago`;
+        return `${diffInMinutes} minute ago`;
     } else if (diffInHours < 24) {
-        return `${diffInHours} hours ago`;
+        return `${diffInHours} hour ago`;
     } else if (diffInDays < 7) {
-        return `${diffInDays} days ago`;
+        return `${diffInDays} day ago`;
     } else if (diffInWeeks < 4) {
-        return `${diffInWeeks} weeks ago`;
+        return `${diffInWeeks} week ago`;
     } else if (diffInMonths < 12) {
-        return `${diffInMonths} months ago`;
+        return `${diffInMonths} month ago`;
     } else {
-        return `${diffInYears} years ago`;
+        return `${diffInYears} year ago`;
     }
 };

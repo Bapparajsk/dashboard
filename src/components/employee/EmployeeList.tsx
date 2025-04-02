@@ -93,6 +93,7 @@ export const EmployeeList = () => {
                                     {...employee}
                                     targetClosest={idTracker.targetClosest}
                                     isSelected={selectedEmployee === employee.id}
+                                    logCount={98}
                                 />
                             ))}
                             <div ref={ref} className={"h-fit w-full flex items-center justify-center"}>
