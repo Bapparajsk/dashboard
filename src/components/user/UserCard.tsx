@@ -11,12 +11,11 @@ export const UserCard = ({ name, description, isEmailVerified, id, online, isSel
         <div className={"w-full h-fit flex items-center justify-center mb-2"}>
             <div
                 className={cn(
-                    "user-card w-full h-full flex items-center justify-between px-3 py-3 border border-gray-600 rounded-lg cursor-pointer transition-all duration-300",
+                    "w-full h-full flex items-center justify-between px-3 py-3 border border-gray-600 rounded-lg cursor-pointer transition-all duration-300",
                     isEmailVerified ?  "hover:border-success-500" : "hover:border-warning-500",
                     isSelected && `${isSelectedClass} scale-[1.015]` ,
                     "hover:scale-[1.015] active:scale-[0.95]",
                     "user-card"
-
                 )}
                 data-id={id}
             >

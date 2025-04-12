@@ -1,6 +1,6 @@
 "use client";
 
-import {createContext, useContext, useState, useEffect, ReactNode} from "react";
+import {createContext, useContext, useState, useEffect, ReactNode, Key} from "react";
 import {EmpContextType, EmployeeType} from "&/context/empContext";
 import {getEmp} from "@/lib/emp";
 import {EmployeeCardProps} from "&/components/employee/EmployeeCard";
@@ -40,7 +40,8 @@ export let employees: EmployeeCardProps[] = [
 const add = () => {
     return employees.map((employee) => {
         const refUser = refList[Math.floor(Math.random() * refList.length)];
-        return {...employee, refUser};
+        const starEmployee = Math.random() < 0.5;
+        return {...employee, refUser, starEmployee};
     });
 };
 
@@ -49,8 +50,11 @@ employees = add();
 export const EmpProvider = ({children} : {children: ReactNode}) => {
 
     const [user, setUser] = useState<EmployeeType | null>(null);
+    const [selectedEmployee, setSelectedEmployee] = useState<EmployeeCardProps | null>(null);
     const [loading, setLoading] = useState(true);
-    const [selectedEmployee, setSelectedEmployee] = useQueryState("selected-employee", parseAsInteger.withDefault(0));
+    const [selectedEmployeeId, setSelectedEmployeeId] = useQueryState("selected-employee-id", parseAsInteger.withDefault(0));
+    const [employeeTab, setEmployeeTab] = useQueryState("employee-tab", {defaultValue: ""});
+
 
     const fetchUser = async () => {
         const user = await getEmp();
@@ -58,12 +62,17 @@ export const EmpProvider = ({children} : {children: ReactNode}) => {
         setLoading(false);
     };
 
-    const selectEmployee = (id: number) => {
-        setSelectedEmployee(id).catch(console.log);
+    const selectEmployeeTab = (id: Key) => {
+        if(typeof id !== "string") return;
+        setEmployeeTab(id).catch(console.log);
+    };
+
+    const selectEmployeeId = (id: number) => {
+        setSelectedEmployeeId(id).catch(console.log);
     };
 
     const getSelectedEmployee = () => {
-        return employees.find((employee) => employee.id === selectedEmployee);
+        return employees.find((employee) => employee.id === selectedEmployeeId);
     };
 
     const fetchEmployees = async ({page = 1} : {page?: number}):Promise<{ employees: EmployeeCardProps[]; nextPage: number | null }> => {
@@ -83,14 +92,23 @@ export const EmpProvider = ({children} : {children: ReactNode}) => {
         fetchUser();
     }, []);
 
+    useEffect(() => {
+        if (selectedEmployeeId) {
+            const employee = getSelectedEmployee();
+            setSelectedEmployee(employee || null);
+        }
+    }, [selectedEmployeeId]);
+
     return (
         <EmpContext value={{
             emp: user,
             loading,
             fetchEmployees,
+            selectedEmployeeId,
+            selectEmployeeId,
             selectedEmployee,
-            selectEmployee,
-            getSelectedEmployee,
+            employeeTab,
+            selectEmployeeTab
         }}>
             {children}
         </EmpContext>

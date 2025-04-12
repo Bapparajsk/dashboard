@@ -2,8 +2,9 @@ import {cn} from "@heroui/react";
 import * as user from "@/components/ui/User";
 import {EmployeeCardProps} from "&/components/employee/EmployeeCard";
 import {dateFormat} from "@/lib/format";
+import {IconCarambolaFilled} from "@tabler/icons-react";
 
-export const EmployeeCard = ({id, name, description, role, isOnline, lastOnline, isNew, refUser, targetClosest, isSelected, logCount}: EmployeeCardProps) => {
+export const EmployeeCard = ({id, name, description, role, isOnline, lastOnline, isNew, refUser, targetClosest, isSelected, logCount, starEmployee}: EmployeeCardProps) => {
 
     const Badge = ({ text, bg }: {text: string, bg: string}) => (
         <div className={`rounded-md px-2 py-0.5 ml-2 h-fit text-[11px] ${bg} text-white`}>
@@ -14,7 +15,7 @@ export const EmployeeCard = ({id, name, description, role, isOnline, lastOnline,
     const createUserCardName = () => {
         return (
             <div className="flex items-center font-bold">
-                <div>{name} :</div>
+                <div className={"flex items-center gap-1"}>{name} {starEmployee && <IconCarambolaFilled size={18} color={"#FFD700"}/>}:</div>
                 {isNew && <Badge text="New Employee" bg="bg-gradient-to-r from-red-500 to-orange-500" />}
                 {refUser && <Badge text={refUser} bg="bg-[#1E90FF]"/>}
                 {logCount && logCount > 0 && <Badge text={`${logCount} Logs`} bg="bg-gradient-to-r from-purple-500 to-pink-500" />}
@@ -45,7 +46,7 @@ export const EmployeeCard = ({id, name, description, role, isOnline, lastOnline,
                 {(lastOnline || isOnline) && (
                     <div className="w-fit h-full flex items-center justify-center">
                         <div className={`px-2 py-1 border rounded-xl border-gray-600 ${isOnline ? "shadow-[0_0_10px_rgba(255,255,255,.5)]" : ""}`}>
-                        <span className="font-semibold text-[12px]">
+                        <span className={`font-semibold text-[12px] ${isOnline && "text-green-500"}`}>
                             {lastOnline ? dateFormat(lastOnline) : "Online" }
                         </span>
                         </div>

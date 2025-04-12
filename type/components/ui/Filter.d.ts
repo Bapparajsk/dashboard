@@ -1,17 +1,13 @@
-import {Key} from "react";
+import {ReactNode} from "react";
+import {InputProps} from "@heroui/input";
+import {TabsProps} from "@heroui/tabs";
 import {Icon} from "@tabler/icons-react";
 
 export interface FilterProps {
     className?: string;
-    InputProps?: {
-        placeholder?: string;
-        onChange?: (value: string) => void;
-        onSubmit?: (value: string) => void;
-    };
-    TabsProps?: {
-        defaultSelectedKey?: string;
-        onSelectionChange?: (key: Key) => void;
+    InputProps?: InputProps;
+    TabsProps?: TabsProps & {
         tabs: {key: string, title: string, Icon: Icon}[];
-        size?: "sm" | "md" | "lg";
     }
+    filterComponent?: ReactNode;
 }

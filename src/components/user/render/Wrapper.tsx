@@ -5,11 +5,13 @@ import {Emails} from "@/components/user/render/Emails";
 import {SendEmail} from "@/components/user/render/SendEmail";
 import {Notifications} from "@/components/user/render/Notifications";
 import {useUserList} from "@/context/userListContext";
+import {Posts} from "@/components/user/render/Posts";
 
 const tabComponents  = {
     "reports": <Emails/>,
     "send-email": <SendEmail/>,
-    "send-notification": <Notifications/>
+    "send-notification": <Notifications/>,
+    "posts": <Posts/>
 };
 
 export const Wrapper = () => {

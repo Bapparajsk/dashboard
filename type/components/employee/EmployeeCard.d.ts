@@ -10,4 +10,5 @@ export interface EmployeeCardProps {
     targetClosest?: string;
     isSelected?: boolean;
     logCount?: number;
+    starEmployee?: boolean
 }

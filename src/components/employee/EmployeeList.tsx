@@ -17,7 +17,7 @@ const idTracker: IDTrackerType = {
 
 export const EmployeeList = () => {
     const [filter, setFilter] = useState<Key>("all"); // Store selected filter
-    const { fetchEmployees, selectedEmployee, selectEmployee } = useEmpContext();
+    const { fetchEmployees, selectedEmployeeId, selectEmployeeId } = useEmpContext();
 
     const {
         data,
@@ -58,7 +58,7 @@ export const EmployeeList = () => {
         const id = parentClickHandler({ e, ...idTracker });
 
         if (!id) return;
-        selectEmployee(Number(id));
+        selectEmployeeId(Number(id));
     };
 
     return (
@@ -92,7 +92,7 @@ export const EmployeeList = () => {
                                     key={idx}
                                     {...employee}
                                     targetClosest={idTracker.targetClosest}
-                                    isSelected={selectedEmployee === employee.id}
+                                    isSelected={selectedEmployeeId === employee.id}
                                     logCount={98}
                                 />
                             ))}

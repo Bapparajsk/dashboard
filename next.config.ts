@@ -3,7 +3,15 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
     images: {
-        domains: ["th.bing.com"],
+        remotePatterns: [
+            {
+                protocol: "https",
+                hostname: "wallpapercave.com",
+                port: "",
+                pathname: "/wp/wp2533091.jpg",
+            },
+        ],
+        domains: ["heroui.com"]
     }
 };
 
