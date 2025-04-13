@@ -55,7 +55,7 @@ export const PostCard = (post : PostCardProps) => {
                                 </div>
                             </div>
                             <Tooltip
-                                color={post.isHidden ? "danger" : "foreground"}
+                                color={post.isHidden ? "primary" : "danger"}
                                 content={post.isHidden ? "Show Post" : "Hide Post"}
                                 className={"cursor-pointer"}
                             >

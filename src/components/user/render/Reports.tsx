@@ -1,7 +1,7 @@
 "use client";
 
 import {useState, MouseEvent} from "react";
-import {EmailCard} from "@/components/user/render/EmailCard";
+import {EmailCard} from "@/components/user/render/ReportsCard";
 import {OpenEmail} from "@/components/user/render/OpenEmail";
 
 function generateTempEmails(count = 10) {
@@ -42,7 +42,7 @@ export interface EmailType {
     isSolved: boolean;
 }
 
-export const Emails = () => {
+export const Reports = () => {
 
     const [emails] = useState(generateTempEmails());
     const [openEmail, setOpenEmail] = useState<EmailType | null>(null);

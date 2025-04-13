@@ -30,11 +30,6 @@ const tabData: TabDataType[] = [
         key: "reports"
     },
     {
-        Icon: IconMailShare,
-        title: "Email",
-        key: "send-email"
-    },
-    {
         Icon: IconBellShare,
         title: "Notification",
         key: "send-notification"

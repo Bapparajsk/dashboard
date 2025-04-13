@@ -1,7 +1,7 @@
-import {EmailType} from "@/components/user/render/Emails";
+import {EmailType} from "@/components/user/render/Reports";
 import {Button} from "@heroui/button";
 import {IconArrowNarrowLeft, IconCornerUpLeft, IconTrash} from "@tabler/icons-react";
-import {getIssueCategory} from "@/components/user/render/EmailCard";
+import {getIssueCategory} from "@/components/user/render/ReportsCard";
 import {Tooltip} from "@heroui/tooltip";
 
 interface OpenEmailProps {

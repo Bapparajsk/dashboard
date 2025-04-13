@@ -1,15 +1,13 @@
 import {UserCard} from "@/components/ui/User";
 import {Emp} from "@/components/skeletons/Emp";
 import { AnimatePresence, motion } from "@/lib/motion";
-import {Emails} from "@/components/user/render/Emails";
-import {SendEmail} from "@/components/user/render/SendEmail";
+import {Reports} from "@/components/user/render/Reports";
 import {Notifications} from "@/components/user/render/Notifications";
 import {useUserList} from "@/context/userListContext";
 import {Posts} from "@/components/user/render/Posts";
 
 const tabComponents  = {
-    "reports": <Emails/>,
-    "send-email": <SendEmail/>,
+    "reports": <Reports/>,
     "send-notification": <Notifications/>,
     "posts": <Posts/>
 };
@@ -21,7 +19,7 @@ export const Wrapper = () => {
     return (
         <div className="w-full h-full flex flex-col">
             {/* User Section */}
-            <div className="w-full h-auto py-2 px-3 border-b border-gray-600 flex items-center">
+            <div className="w-full h-auto py-3 px-3 border-b border-gray-600 flex items-center">
                 {loading_user ? (
                     <Emp />
                 ) : (

@@ -3,7 +3,7 @@ import { Skeleton } from "@heroui/skeleton";
 export const Emp = () => {
     return (
         <div className={"flex gap-2"}>
-            <Skeleton className={"size-10 rounded-full"}/>
+            <Skeleton className={"size-9 rounded-full"}/>
             <div className={"flex flex-col gap-1 justify-center"}>
                 <Skeleton className={"w-24 h-4"}/>
                 <Skeleton className={"w-32 h-3"}/>
@@ -21,11 +21,11 @@ export const EmployeeCardSkeleton = ({count = 1}: {count?: number}) => {
                     className={"user-card w-full h-full flex items-center justify-between px-3 py-3 border border-gray-600 rounded-lg cursor-pointer transition-all duration-300"}
                 >
                     <Emp/>
-                    <Skeleton className={"w-24 h-8 rounded-md"}/>
+                    <Skeleton className={"w-24 h-7 rounded-md"}/>
                 </div>
             </div>
-        )
-    }
+        );
+    };
 
     return (
         <>

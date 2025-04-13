@@ -2,11 +2,11 @@
 
 import * as React from "react";
 import { HeroUIProvider } from "@heroui/system";
+import {ToastProvider} from "@heroui/toast";
 import { useRouter } from "next/navigation";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {EmpProvider} from "@/context/empContext";
 import {UserListProvider} from "@/context/userListContext";
-
 
 declare module "@react-types/shared" {
     interface RouterConfig {
@@ -22,6 +22,7 @@ export function Providers({ children } :{ children: React.ReactNode }) {
 
     return (
         <HeroUIProvider navigate={router.push}>
+            <ToastProvider/>
             <QueryClientProvider client={queryClient}>
                 <EmpProvider>
                     <UserListProvider>
