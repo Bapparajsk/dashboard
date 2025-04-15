@@ -1,4 +1,6 @@
 "use client";
+
+import {FC, createElement} from "react";
 import {useEmpContext} from "@/context/empContext";
 import {CardTab} from "@/components/ui/CardTab";
 import {TabDataType} from "&/components/user/userList";
@@ -40,6 +42,14 @@ const tabData: TabDataType[] = [
     }
 ];
 
+const tabComponents: Record<string, FC> = {
+    profile: Profile,
+    logs: Logs,
+    permissions: () => <div>Permissions</div>,
+    "send-email": () => <div>Email</div>,
+    "send-notification": () => <div>Notification</div>
+};
+
 export const EmployeeDeletes = () => {
 
     const { selectedEmployee, employeeTab, selectEmployeeTab } = useEmpContext();
@@ -59,7 +69,13 @@ export const EmployeeDeletes = () => {
             </div>
             <div className={"w-full h-full p-2"}>
                 <div className={"w-full h-full border overflow-hidden rounded-md border-gray-600"}>
-                    {selectedEmployee && <Profile/>}
+                    <div className={"w-full h-full flex flex-col"}>
+                        {selectedEmployee && (
+                            <div className={"w-full h-full flex flex-col"}>
+                                {createElement(tabComponents[employeeTab])}
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>

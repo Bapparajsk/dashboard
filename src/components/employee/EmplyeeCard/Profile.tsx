@@ -14,6 +14,10 @@ const deletesItems: DeletesItemType[] = [
         value: "123456"
     },
     {
+        title: "Status",
+        value: "Online"
+    },
+    {
         title: "Role",
         value: "Developer"
     },
@@ -51,10 +55,12 @@ export const Profile = () => {
 
     const { selectedEmployee } = useEmpContext();
 
+    deletesItems[1].value = selectedEmployee?.isOnline ? "Online" : "Offline";
+
     return (
         <div className={"w-full h-full"}>
             <div className={"w-full h-80 flex border-b border-gray-600"}>
-                <div className={"w-full h-full flex flex-col items-center justify-center gap-3 bg-hero-pattern"}>
+                <div className={"w-full h-full flex flex-col items-center justify-center gap-3 bg-user-post-card-hidden"}>
                     <div className={"relative size-40 z-0"}>
                         <Image
                             height={500} width={500}

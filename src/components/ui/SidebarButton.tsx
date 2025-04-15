@@ -4,14 +4,15 @@ import { Button } from "@heroui/button";
 import { ButtonDataType } from "&/components/ui/SidebarButton";
 import { cn } from "@heroui/react";
 
-export const SidebarButton = ({ Icon, label, link, isDanger }: ButtonDataType) => {
+export const SidebarButton = ({ Icon, label, link, isDanger, onClick }: ButtonDataType) => {
 
     const transform = "transition-transform duration-300 ease-in-out";
 
     return (
         <Button
             fullWidth={true}
-            as={Link}
+            as={link ? Link : "button"}
+            onPress={onClick}
             href={link}
             variant={isDanger ? "ghost" : "bordered"}
             color={isDanger ? "danger" : "default"}
