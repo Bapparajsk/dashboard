@@ -118,6 +118,12 @@ export const Posts = () => {
                                 >
                                     {selectPost?.isHidden ? "Show Post" : "Hide Post"}
                                 </Button>
+                                <Button
+                                    color={"danger"}
+                                    variant={"ghost"} onPress={() => handleHidePost(selectPost?.id)}
+                                >
+                                    {"Delete Post"}
+                                </Button>
                             </ModalFooter>
                         </>
                     )}

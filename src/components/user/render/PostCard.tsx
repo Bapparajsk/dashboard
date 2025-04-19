@@ -1,6 +1,6 @@
 import {Button, Card, Tooltip} from "@heroui/react";
 import {CardBody} from "@heroui/card";
-import {IconEye, IconEyeCancel, IconHeart, IconMessage, IconShare} from "@tabler/icons-react";
+import {IconAlertSmall, IconHeart, IconMessage, IconShare} from "@tabler/icons-react";
 import {motion} from "motion/react";
 import Image from "next/image";
 import {PostType} from "&/user/post";
@@ -55,8 +55,8 @@ export const PostCard = (post : PostCardProps) => {
                                 </div>
                             </div>
                             <Tooltip
-                                color={post.isHidden ? "primary" : "danger"}
-                                content={post.isHidden ? "Show Post" : "Hide Post"}
+                                color={"foreground"}
+                                content={"Setting"}
                                 className={"cursor-pointer"}
                             >
                                 <Button
@@ -67,7 +67,7 @@ export const PostCard = (post : PostCardProps) => {
                                     color={post.isHidden ? "danger" : "primary"}
                                     onPress={() => post.onHideClick(post.idx)}
                                 >
-                                    {post.isHidden ? <IconEyeCancel size={"18"}/> : <IconEye size={"18"} />}
+                                    <IconAlertSmall size={30}/>
                                 </Button>
                             </Tooltip>
                         </div>

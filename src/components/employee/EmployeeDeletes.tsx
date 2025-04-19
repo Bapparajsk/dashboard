@@ -6,9 +6,7 @@ import {CardTab} from "@/components/ui/CardTab";
 import {TabDataType} from "&/components/user/userList";
 import {
     IconBellShare,
-    IconKey,
     IconListTree,
-    IconMailShare,
     IconUserScan
 } from "@tabler/icons-react";
 import {Profile} from "@/components/employee/EmplyeeCard/Profile";
@@ -26,16 +24,6 @@ const tabData: TabDataType[] = [
         key: "logs"
     },
     {
-        Icon: IconKey,
-        title: "Permissions",
-        key: "permissions"
-    },
-    {
-        Icon: IconMailShare,
-        title: "Email",
-        key: "send-email"
-    },
-    {
         Icon: IconBellShare,
         title: "Notification",
         key: "send-notification"
@@ -45,8 +33,6 @@ const tabData: TabDataType[] = [
 const tabComponents: Record<string, FC> = {
     profile: Profile,
     logs: Logs,
-    permissions: () => <div>Permissions</div>,
-    "send-email": () => <div>Email</div>,
     "send-notification": () => <div>Notification</div>
 };
 

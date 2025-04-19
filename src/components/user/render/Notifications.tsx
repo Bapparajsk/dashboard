@@ -25,7 +25,7 @@ export const Notifications = () => {
     return (
         <div className={"w-full h-full flex flex-col justify-between p-2"}>
             <div className={"w-full h-full flex flex-col gap-2"}>
-                <Select variant={"bordered"} labelPlacement="outside" label="Select an animal" isRequired={true}>
+                <Select variant={"bordered"} labelPlacement="outside" defaultSelectedKeys={["cat"]} label="Select an animal" isRequired={true} size={"sm"}>
                     {animals.map((animal) => (
                         <SelectItem key={animal.key}>{animal.label}</SelectItem>
                     ))}
