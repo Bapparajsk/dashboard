@@ -56,7 +56,7 @@ export const EmployeeDeletes = () => {
             <div className={"w-full h-full p-2"}>
                 <div className={"w-full h-full border overflow-hidden rounded-md border-gray-600"}>
                     <div className={"w-full h-full flex flex-col"}>
-                        {selectedEmployee && (
+                        {selectedEmployee && employeeTab && (
                             <div className={"w-full h-full flex flex-col"}>
                                 {createElement(tabComponents[employeeTab])}
                             </div>

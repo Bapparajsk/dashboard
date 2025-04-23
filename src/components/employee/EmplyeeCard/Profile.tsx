@@ -4,7 +4,7 @@ import {useEmpContext} from "@/context/empContext";
 import {cn, Input} from "@heroui/react";
 import {Button, ButtonProps} from "@heroui/button";
 import {Tooltip} from "@heroui/tooltip";
-import {useRef} from "react";
+import {useRef, useState} from "react";
 
 interface DeletesItemType {
     title: string;
@@ -44,8 +44,8 @@ const deletesItems: DeletesItemType[] = [
         isEditable: false,
     },
     {
-        title: "Star",
-        value: "broenger",
+        title: "Level",
+        value: "Diamond",
         isEditable: true,
         buttons: [
             {
@@ -103,9 +103,9 @@ export const Profile = () => {
 
     const indicatorRef = useRef<HTMLDivElement>(null);
     const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+    const [userD, setUserD] = useState(deletesItems);
     const { selectedEmployee } = useEmpContext();
     deletesItems[1].value = selectedEmployee?.isOnline ? "Online" : "Offline";
-
 
     const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
         const parent = event.currentTarget;
@@ -135,7 +135,7 @@ export const Profile = () => {
     return (
         <div className={"w-full h-full"}>
             <div className={"w-full h-80 flex border-b border-gray-600"}>
-                <div className={"relative w-full h-full flex flex-col items-center justify-center gap-3 bg-user-post-card"}>
+                <div className={"relative w-full h-full flex flex-col items-center justify-center gap-3 bg-employee-level-diamond"}>
                     <div className={"relative size-40 z-0"}>
                         <Image
                             height={500} width={500}
@@ -165,8 +165,8 @@ export const Profile = () => {
                 onMouseLeave={handleMouseLeave}
                 className={"relative w-full h-fit flex flex-col items-center justify-center gap-2 py-2 px-2"}
             >
-                <div ref={indicatorRef} style={{ top: 0 }} className={"w-[6px] h-7 absolute left-2 bg-gray-100 rounded-xl transition-all duration-300 ease-in-out"}/>
-                {deletesItems.map((item, idx) => (
+                <div ref={indicatorRef} style={{ top: 0, opacity: 0 }} className={"w-[6px] h-7 absolute left-2 bg-gray-100 rounded-xl transition-all duration-300 ease-in-out"}/>
+                {userD.map((item, idx) => (
                     <div
                         key={idx}
                         ref={(el) => {itemRefs.current[idx] = el;}}
