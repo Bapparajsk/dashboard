@@ -1,8 +1,13 @@
 import {Input, Spinner, Tabs, Tab, cn} from "@heroui/react";
-import {IconSearch} from "@tabler/icons-react";
+import {IconSearch, IconUserPlus} from "@tabler/icons-react";
 import {FilterProps} from "&/components/ui/Filter";
+import {Button} from "@heroui/button";
+import React from "react";
 
-export const Filter = ({ InputProps, TabsProps, className, filterComponent, }: FilterProps) => {
+export const Filter = ({ InputProps, TabsProps, className, filterComponent, createNewButton}: FilterProps) => {
+
+    const NewButtonIcon = createNewButton?.icon?.Icon || IconUserPlus;
+
     return (
         <div className={cn("w-full h-fit sticky top-0 bg-black z-30 pt-2", className)}>
             <div className={"w-full h-full px-3 flex justify-between items-center gap-2"}>
@@ -33,9 +38,16 @@ export const Filter = ({ InputProps, TabsProps, className, filterComponent, }: F
                         }/>
                     ))}
                 </Tabs>}
+                {createNewButton && (
+                    <Button variant={"shadow"} color={"success"} {...createNewButton.buttonProps}>
+                        <div className={"flex gap-1 items-center"}>
+                            <NewButtonIcon size={createNewButton.icon?.size || 18} className={createNewButton.icon?.className}/>
+                            <span className={"font-semibold"}>{createNewButton.buttonProps?.title || "New"}</span>
+                        </div>
+                    </Button>
+                )}
                 {filterComponent}
             </div>
-
             <div className={"w-full h-[1px] bg-gray-600 mt-2"}/>
         </div>
     );

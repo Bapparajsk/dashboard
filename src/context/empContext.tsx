@@ -55,7 +55,6 @@ export const EmpProvider = ({children} : {children: ReactNode}) => {
     const [selectedEmployeeId, setSelectedEmployeeId] = useQueryState("selected-employee-id", parseAsInteger.withDefault(0));
     const [employeeTab, setEmployeeTab] = useQueryState("employee-tab", {defaultValue: ""});
 
-
     const fetchUser = async () => {
         const user = await getEmp();
         setUser(user);

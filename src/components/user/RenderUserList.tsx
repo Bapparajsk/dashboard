@@ -7,8 +7,9 @@ import {useIntersection} from "@mantine/hooks";
 import {useInfiniteQuery} from "@tanstack/react-query";
 import {useUserList} from "@/context/userListContext";
 import {Filter} from "@/components/ui/Filter";
-import {IconMail, IconUsers} from "@tabler/icons-react";
+import {IconMail, IconUserPlus, IconUsers} from "@tabler/icons-react";
 import {parentClickHandler} from "@/lib/clickHandler";
+import {Button} from "@heroui/button";
 
 export const RenderUserList = () => {
 
@@ -71,6 +72,15 @@ export const RenderUserList = () => {
                         { key: "user", title: "Users", Icon: IconUsers },
                         { key: "email", title: "Email", Icon: IconMail },
                     ]
+                }}
+                createNewButton={{
+                    icon: { size: 20 },
+                    buttonProps: {
+                        size: "md",
+                        onPress: () => {
+                            console.log("Create new user");
+                        }
+                    }
                 }}
             />
             {

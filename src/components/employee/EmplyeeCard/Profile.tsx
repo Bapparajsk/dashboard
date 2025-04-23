@@ -4,6 +4,7 @@ import {useEmpContext} from "@/context/empContext";
 import {cn, Input} from "@heroui/react";
 import {Button, ButtonProps} from "@heroui/button";
 import {Tooltip} from "@heroui/tooltip";
+import {useRef} from "react";
 
 interface DeletesItemType {
     title: string;
@@ -30,16 +31,11 @@ const deletesItems: DeletesItemType[] = [
         buttons: [
             {
                 title: "Edit Role",
+                color: "success",
                 onPress: () => {
                     console.log("Edit Role");
                 },
             },
-            {
-                title: "Delete Role",
-                onPress: () => {
-                    console.log("Delete Role");
-                },
-            }
         ]
     },
     {
@@ -49,20 +45,22 @@ const deletesItems: DeletesItemType[] = [
     },
     {
         title: "Star",
-        value: "1",
+        value: "broenger",
         isEditable: true,
         buttons: [
             {
-                title: "Add Star",
+                title: "Promote",
                 onPress: () => {
-                    console.log("Add Star");
+                    console.log("Promote");
                 },
+                color: "success",
             },
             {
-                title: "Remove Star",
+                title: "Demote",
                 onPress: () => {
-                    console.log("Remove Star");
+                    console.log("Demote");
                 },
+                color: "danger",
             }
         ],
     },
@@ -91,26 +89,48 @@ const deletesItems: DeletesItemType[] = [
         isEditable: true,
         buttons: [
             {
-                title: "Add",
+                title: "Edit Permission",
+                color: "warning",
                 onPress: () => {
                     console.log("Add Permission");
                 },
             },
-            {
-                title: "Remove",
-                onPress: () => {
-                    console.log("Remove Permission");
-                },
-            }
         ],
     }
 ];
 
 export const Profile = () => {
 
+    const indicatorRef = useRef<HTMLDivElement>(null);
+    const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
     const { selectedEmployee } = useEmpContext();
-
     deletesItems[1].value = selectedEmployee?.isOnline ? "Online" : "Offline";
+
+
+    const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
+        const parent = event.currentTarget;
+        const indicator = indicatorRef.current;
+
+        if (!indicator) return;
+
+        // Find the closest item div
+        const target = (event.target as HTMLElement).closest(".hover-item") as HTMLElement;
+
+        if (target && parent.contains(target)) {
+            const top = target.offsetTop;
+            indicator.style.top = `${top+6}px`;
+            indicator.style.opacity = "1";
+        } else {
+            indicator.style.opacity = "0";
+        }
+    };
+
+    const handleMouseLeave = () => {
+        const indicator = indicatorRef.current;
+        if (indicator) {
+            indicator.style.opacity = "0";
+        }
+    };
 
     return (
         <div className={"w-full h-full"}>
@@ -140,18 +160,25 @@ export const Profile = () => {
                     </div>
                 </div>
             </div>
-            <div className={"w-full h-fit flex flex-col items-center justify-center gap-2 py-2 px-2"}>
+            <div
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+                className={"relative w-full h-fit flex flex-col items-center justify-center gap-2 py-2 px-2"}
+            >
+                <div ref={indicatorRef} style={{ top: 0 }} className={"w-[6px] h-7 absolute left-2 bg-gray-100 rounded-xl transition-all duration-300 ease-in-out"}/>
                 {deletesItems.map((item, idx) => (
-                    <div key={idx} className={"relative w-full flex items-center justify-between gap-2 group cursor-pointer font-semibold"}>
+                    <div
+                        key={idx}
+                        ref={(el) => {itemRefs.current[idx] = el;}}
+                        className={"hover-item w-full flex items-center justify-between gap-2 group cursor-pointer font-semibold"}
+                    >
                         <div
                             className={"w-1/3 flex items-center justify-start text-gray-400 ml-4 transition-all duration-300 ease-in-out group-hover:translate-x-2 group-hover:text-gray-100"}>
                             {item.title}
                         </div>
-                        <div className={"w-[6px] h-2/3 absolute left-0 top-1/2 -translate-y-1/2 bg-gray-600 rounded-xl transition-all duration-300 ease-in-out group-hover:bg-gray-300"}/>
                         <div className={"w-full flex"}>
                             <Input
                                 isDisabled={true}
-                                // fullWidth={true}
                                 variant={"bordered"}
                                 value={Array.isArray(item.value) ? item.value.join(", ") : item.value}
                             />
@@ -162,7 +189,9 @@ export const Profile = () => {
                                             key={index}
                                             variant={"faded"}
                                             radius={"lg"}
+                                            className={cn("font-semibold", button.className)}
                                             {...button}
+
                                         >
                                             {button.title}
                                         </Button>

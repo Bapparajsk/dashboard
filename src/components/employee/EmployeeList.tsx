@@ -82,6 +82,12 @@ export const EmployeeList = () => {
                             { key: "online", title: "Online", Icon: () => <div/> },
                         ]
                     }}
+                    createNewButton={{
+                        buttonProps: {
+                            size: "sm",
+                            onPress: () => console.log("Create New Employee"),
+                        }
+                    }}
                 />
 
                 {
