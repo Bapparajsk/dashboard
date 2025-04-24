@@ -11,6 +11,7 @@ import {
 } from "@tabler/icons-react";
 import {Profile} from "@/components/employee/EmplyeeCard/Profile";
 import {Logs} from "@/components/employee/EmplyeeCard/Logs";
+import {Notifications} from "@/components/ui/Notifications";
 
 const tabData: TabDataType[] = [
     {
@@ -33,7 +34,7 @@ const tabData: TabDataType[] = [
 const tabComponents: Record<string, FC> = {
     profile: Profile,
     logs: Logs,
-    "send-notification": () => <div>Notification</div>
+    "send-notification": () => <Notifications/>
 };
 
 export const EmployeeDeletes = () => {

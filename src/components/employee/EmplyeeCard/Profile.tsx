@@ -1,5 +1,12 @@
 import Image from "next/image";
-import {IconCarambolaFilled, IconTrash} from "@tabler/icons-react";
+import {
+    IconCarambola,
+    IconCarambolaFilled,
+    IconCrown,
+    IconLaurelWreath, IconLaurelWreathFilled,
+    IconMilitaryAward,
+    IconTrash
+} from "@tabler/icons-react";
 import {useEmpContext} from "@/context/empContext";
 import {cn, Input} from "@heroui/react";
 import {Button, ButtonProps} from "@heroui/button";
@@ -147,7 +154,10 @@ export const Profile = () => {
                     <div className={"text-center"}>
                         <div className={"flex gap-2 items-center text-2xl font-semibold text-gray-300"}>
                             <span>{selectedEmployee?.name}</span>
-                            <IconCarambolaFilled color={"#FFD700"}/>
+                            <IconCrown size={40} color={"#FFD700"}/>
+                            <IconMilitaryAward size={40} color={"#FFD700"}/>
+                            <IconLaurelWreathFilled size={30} color={"#FFD700"}/>
+                            <IconCarambolaFilled  color={"#FFD700"}/>
                         </div>
                         <p className={"text-gray-500"}>{selectedEmployee?.role}</p>
                     </div>

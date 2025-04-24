@@ -2,7 +2,7 @@ import {UserCard} from "@/components/ui/User";
 import {Emp} from "@/components/skeletons/Emp";
 import { AnimatePresence, motion } from "@/lib/motion";
 import {Reports} from "@/components/user/render/Reports";
-import {Notifications} from "@/components/user/render/Notifications";
+import {Notifications} from "@/components/ui/Notifications";
 import {useUserList} from "@/context/userListContext";
 import {Posts} from "@/components/user/render/Posts";
 
