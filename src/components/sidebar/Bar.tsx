@@ -6,7 +6,6 @@ import {RootUser} from "@/components/sidebar/RootUser";
 import {useEmpContext} from "@/context/empContext";
 import {SidebarButton} from "@/components/ui/SidebarButton";
 import {IconBell, IconLogout, IconMail, IconSettings, IconUserScan} from "@tabler/icons-react";
-import {DropDown} from "@/components/sidebar/DropDown";
 import BackButton from "@/components/ui/BackButton";
 import {ButtonDataType} from "&/components/sidebar/bar";
 
@@ -56,18 +55,8 @@ export default function Bar(){
                 </div>
                 <RootUser/>
                 <div className={"px-3"}>
-                    <div className={"w-full h-full border-b border-gray-600 font-semibold pb-1"}>
-                        <DropDown
-                            selectionMode={"single"}
-                            itemList={[
-                                {
-                                    key: "user scan",
-                                    title: {label: "User", Icon: IconUserScan},
-                                    ariaLabel: "user scan",
-                                    children: <GetButtons/>
-                                },
-                            ]}
-                        />
+                    <div className={"w-full h-full font-semibold pb-1"}>
+                        <GetButtons/>
                     </div>
                 </div>
             </div>

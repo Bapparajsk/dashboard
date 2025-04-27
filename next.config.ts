@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
                 pathname: "/wp/wp2533091.jpg",
             },
         ],
-        domains: ["heroui.com"]
+        domains: ["heroui.com", "deep-image.ai"]
     }
 };
 

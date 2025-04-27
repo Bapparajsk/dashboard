@@ -30,8 +30,8 @@ const buttonData: ButtonDataType[] = [
 
 export const RootUser = () => {
     return (
-        <div className={"w-full h-auto py-2 px-3 font-semibold"}>
-            <div className={"border-b border-gray-600 pb-1"}>
+        <div className={"w-full h-auto py-2 px-3 font-semibold "}>
+            <div className={"border-b border-gray-600 pb-1 "}>
                 <DropDown
                     selectionMode={"multiple"}
                     itemList={[
