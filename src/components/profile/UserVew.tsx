@@ -3,7 +3,6 @@ import Image from "next/image";
 import {
     Icon,
     IconAlertSmall,
-    IconCode,
     IconKey,
     IconMail,
     IconMapPin,
@@ -11,6 +10,7 @@ import {
     IconUsersPlus
 } from "@tabler/icons-react";
 import {Button, Divider, Tooltip} from "@heroui/react";
+import {ProfileModButton} from "@/components/profile/ProfileModButton";
 
 interface Userdata {
     title: string;
@@ -69,11 +69,7 @@ export const UserVew = () => {
                         className={"w-full h-full object-cover rounded-full"}
                     />
                     <div className={"absolute bottom-14 right-0"}>
-                        <Tooltip content={"Developer"} color={"foreground"} showArrow={true}>
-                            <Button variant={"faded"} radius={"lg"} isIconOnly={true}>
-                                <IconCode size={20}/>
-                            </Button>
-                        </Tooltip>
+                        <ProfileModButton/>
                     </div>
                 </div>
                 <div className={"w-full flex flex-col gap-2 items-start justify-start "}>
@@ -97,12 +93,15 @@ export const UserVew = () => {
                         <ProfileItem key={index} {...item}/>
                     ))}
                 </div>
-                <div className={"w-full"}>
-                    <div className={"flex items-center gap-2 text-gray-500"}>
-                        <IconKey/>
-                        <p className={"font-semibold text-gray-300"}> Permissions </p>
+                <Divider className={"bg-gray-600"}/>
+                <div className={"w-full flex flex-col gap-2 items-start justify-start"}>
+                    <div className={"flex flex-col gap-2"}>
+                        <div className={"flex items-center gap-2 text-gray-500"}>
+                            <IconKey/>
+                            <p className={"font-semibold text-gray-300"}> Permissions </p>
+                        </div>
+                        <Divider className={"bg-gray-600"}/>
                     </div>
-                    <Divider className={"bg-gray-600 my-1"}/>
                     <div className={"relative w-full flex flex-wrap items-start gap-2 text-gray-500 h-fit max-h-40 overflow-y-auto"}>
                         {permissionslist.map((item, index) => (
                             <div key={index} className={"flex items-center gap-2 px-1"}>
