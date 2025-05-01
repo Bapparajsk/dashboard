@@ -1,4 +1,4 @@
-"use client";
+    "use client";
 
 import {Tab, Tabs, TabsProps} from "@heroui/react";
 import {TabDataType} from "&/components/user/userList";

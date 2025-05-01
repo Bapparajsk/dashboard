@@ -1,3 +1,5 @@
+"use client";
+
 import {Input, Spinner, Tabs, Tab, cn} from "@heroui/react";
 import {IconSearch, IconUserPlus} from "@tabler/icons-react";
 import {FilterProps} from "&/components/ui/Filter";

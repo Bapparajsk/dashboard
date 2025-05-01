@@ -13,6 +13,7 @@ import {
 import {PostType} from "&/user/post";
 import {ModelPostcard, PostCard} from "@/components/user/render/PostCard";
 import {useUserList} from "@/context/userListContext";
+import {Filter} from "@/components/ui/Filter";
 
 const posts: PostType[] = [
     {
@@ -79,6 +80,7 @@ export const Posts = () => {
 
     return (
         <>
+            <Filter/>
             <div className={"p-2 mb-12 gap-2 space-y-2"}>
                 {postList.map((post, idx) => (
                     <div key={idx} className="w-full h-auto">

@@ -1,15 +1,24 @@
 "use client";
 
+import {ProfileNav} from "@/components/profile/ProfileNav";
+import {Divider} from "@heroui/divider";
+import {LogLists} from "@/components/profile/LogLists";
+
 export const UserLogs = () => {
     return (
-        <div className={"w-full h-full px-5"}>
-            <div className={"w-full h-52 flex items-center justify-center"}>
-                <div className={"w-full h-20 border border-gray-400 rounded-xl bg-neutral-800/70 flex items-center justify-center"}>
-                    <div className={"flex items-center justify-center"}>
-                        <h1 className={"text-2xl text-white font-bold"}>User Logs</h1>
-                    </div>
+        <div className={"w-full h-full px-5 flex flex-col"}>
+            <div className={"w-full h-1/5 flex items-center justify-center"}>
+                <div className={"w-full h-28"}>
+                    <ProfileNav/>
                 </div>
+            </div>
+            <Divider className={"my-1"}/>
+            <div className={"w-full h-4/5 py-3"}>
+                <LogLists/>
             </div>
         </div>
     );
 };
+
+
+

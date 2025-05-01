@@ -38,12 +38,12 @@ const data: Userdata[] = [
         value: "@bappa"
     },
     {
-        title: "Email",
-        value: "bapparajsk@gmail.com"
-    },
-    {
         title: "Role",
         value: "Developer"
+    },
+    {
+        title: "Email",
+        value: "bapparajsk@gmail.com"
     },
     {
         title: "Location",
@@ -58,16 +58,18 @@ const permissionslist = [
 export const UserVew = () => {
     return (
         <div className={"w-full h-full px-2 py-3 flex flex-col items-center"}>
-            <div className={"w-5/6 flex flex-col items-center gap-3"}>
-                <div className={"size-72 relative"}>
-                    <Image
-                        width={200}
-                        height={200}
-                        src={"https://deep-image.ai/blog/content/images/size/w1600/2022/08/magic-g1db898374_1920.jpg"}
-                        alt={"user"}
-                        loading={"lazy"}
-                        className={"w-full h-full object-cover rounded-full"}
-                    />
+            <div className={"w-5/6 flex flex-col items-center gap-2"}>
+                <div className={"size-72 relative mb-5"}>
+                    <Tooltip placement={"bottom"} showArrow={true} content={"Change profile Pitcher"} color={"foreground"}>
+                        <Image
+                            width={500}
+                            height={500}
+                            src={"https://www.powertrafic.fr/wp-content/uploads/2023/04/image-ia-exemple.png"}
+                            alt={"user"}
+                            loading={"lazy"}
+                            className={"w-full h-full object-cover rounded-full border border-gray-500 cursor-pointer"}
+                        />
+                    </Tooltip>
                     <div className={"absolute bottom-14 right-0"}>
                         <ProfileModButton/>
                     </div>
@@ -98,7 +100,7 @@ export const UserVew = () => {
                     <div className={"flex flex-col gap-2"}>
                         <div className={"flex items-center gap-2 text-gray-500"}>
                             <IconKey/>
-                            <p className={"font-semibold text-gray-300"}> Permissions </p>
+                            <p className={"font-semibold text-gray-300"}>Permissions :</p>
                         </div>
                         <Divider className={"bg-gray-600"}/>
                     </div>
