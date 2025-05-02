@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {EmpProvider} from "@/context/empContext";
 import {UserListProvider} from "@/context/userListContext";
+import {DrawerProvider} from "@/context/drawerContext";
 
 declare module "@react-types/shared" {
     interface RouterConfig {
@@ -18,7 +19,7 @@ declare module "@react-types/shared" {
 
 export function Providers({ children } :{ children: React.ReactNode }) {
     const router = useRouter();
-    const [queryClient,] = React.useState(new QueryClient());
+    const [queryClient] = React.useState(new QueryClient());
 
     return (
         <HeroUIProvider navigate={router.push}>
@@ -26,7 +27,9 @@ export function Providers({ children } :{ children: React.ReactNode }) {
             <QueryClientProvider client={queryClient}>
                 <EmpProvider>
                     <UserListProvider>
-                        {children}
+                        <DrawerProvider>
+                            {children}
+                        </DrawerProvider>
                     </UserListProvider>
                 </EmpProvider>
             </QueryClientProvider>
