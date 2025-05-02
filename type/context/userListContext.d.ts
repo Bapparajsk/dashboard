@@ -1,6 +1,4 @@
 import {Key} from "react";
-import {PostType} from "&/user/post";
-
 export interface UserType {
     id: number
     name: string;

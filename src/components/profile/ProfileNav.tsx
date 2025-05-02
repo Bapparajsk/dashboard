@@ -1,15 +1,20 @@
 "use client";
 
-import {Button, Tooltip, CardBody, Card, Drawer,
+import {Button, ButtonProps, CardBody, Card, Drawer,
     DrawerContent,
     DrawerHeader,
     DrawerBody,
     useDisclosure,} from "@heroui/react";
-import {Icon, IconArrowRight, IconBell, IconMail} from "@tabler/icons-react";
+import {
+    Icon,
+    IconArrowBarToLeft,
+    IconArrowBarToRight,
+    IconBell,
+    IconMail
+} from "@tabler/icons-react";
 import {CardTab} from "@/components/ui/CardTab";
 import {useQueryState} from "nuqs";
 import {useState} from "react";
-import {ButtonProps} from "@heroui/button";
 
 interface ButtonType {
     key: "inbox" | "notification";
@@ -29,35 +34,32 @@ export const ProfileNav = () => {
     const [buttons, setButtons] = useState(ButtonList);
     const [drawerTab, setDrawerTab] = useQueryState("drawer-tab", { defaultValue: "" });
 
-    const {isOpen, onOpen, onOpenChange} = useDisclosure();
-
-    const handleClick = (key: ButtonType["key"]) => {
-        setDrawerTab(key).catch(console.error);
-        onOpenChange();
-        onOpen();
-    };
+    const {isOpen, onOpenChange} = useDisclosure();
 
     return (
         <>
             <Card fullWidth={true} className={"h-full border border-gray-700"}>
-                <CardBody className={"px-20 flex-row items-center justify-between"}>
-                    <div className={""}>
-
-                    </div>
-                    <div className={"flex items-center justify-center gap-3"}>
-                        {buttons.map(({key, Icon, tooltip, title, color}) => (
-                            <Tooltip key={key} content={tooltip || title} color={"foreground"} showArrow={true}>
+                <CardBody className={"px-10 flex-row items-center justify-end"}>
+                    <div className={"flex gap-2"}>
+                        {
+                            buttons.map((button) => (
                                 <Button
-                                    onPress={() => handleClick(key)}
-                                    isIconOnly={true}
-                                    radius={"lg"}
+                                    key={button.key}
+                                    color={button.color}
                                     variant={"faded"}
-                                    color={color}
+                                    isIconOnly={true}
+                                    onPress={() => {
+                                        setDrawerTab(button.key).catch(console.error);
+                                        onOpenChange();
+                                    }}
                                 >
-                                    <Icon size={20}/>
+                                    <button.Icon size={20}/>
                                 </Button>
-                            </Tooltip>
-                        ))}
+                            ))
+                        }
+                        <Button onPress={onOpenChange} isIconOnly={true} variant={"ghost"}>
+                            <IconArrowBarToLeft size={20}/>
+                        </Button>
                     </div>
                 </CardBody>
             </Card>
@@ -66,16 +68,12 @@ export const ProfileNav = () => {
                 onOpenChange={onOpenChange}
                 backdrop={"blur"}
                 size={"xl"}
-                closeButton={
-                    <Button onPress={onOpenChange} isIconOnly={true} variant={"flat"} >
-                        <IconArrowRight size={20}/>
-                    </Button>
-                }
+                hideCloseButton={true}
             >
                 <DrawerContent>
                     {(onClose) => (
                         <>
-                            <DrawerHeader className="flex flex-col gap-1">
+                            <DrawerHeader className="w-full flex items-center justify-between">
                                 <CardTab
                                     items={buttons}
                                     defaultSelectedKey={drawerTab}
@@ -86,6 +84,9 @@ export const ProfileNav = () => {
                                     onChange={onClose}
                                     variant={"bordered"}
                                 />
+                                <Button  onPress={onOpenChange} isIconOnly={true} variant={"flat"} >
+                                    <IconArrowBarToRight size={20}/>
+                                </Button>
                             </DrawerHeader>
                             <DrawerBody>
                                 <p>
