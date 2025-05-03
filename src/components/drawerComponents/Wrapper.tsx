@@ -5,6 +5,9 @@ import {useDrawerContext} from "@/context/drawerContext";
 import {Inbox} from "./Inbox";
 import {Notification} from "./Notification";
 import {ReactNode} from "react";
+import {WrapperCardProps} from "&/components/drawerComponents/notification";
+import {Card, CardBody, ScrollShadow, User} from "@heroui/react";
+import {dateFormat} from "@/lib/format";
 
 export const Wrapper = () => {
 
@@ -12,13 +15,13 @@ export const Wrapper = () => {
 
     return (
         <div className="w-full h-full flex flex-col">
-            <div className={"w-full h-16 flex items-center"}>
+            <div className={"w-full h-[6%] flex items-center"}>
                 <AnimatePresence mode={"wait"}>
                     <motion.div
                         key={drawerTab}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -10 }}
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 20 }}
                         transition={{ duration: 0.2 }}
                         className={"w-full h-full flex items-center font-semibold text-2xl"}
                     >
@@ -26,15 +29,37 @@ export const Wrapper = () => {
                     </motion.div>
                 </AnimatePresence>
             </div>
-            {drawerTab === "notification" ? <Notification/> : <Inbox/>}
+            <div className={"w-full h-[94%]"}>
+                {drawerTab === "notification" ? <Notification/> : <Inbox/>}
+            </div>
         </div>
     );
 };
 
-export const ComponentWrapper = ({children} : Readonly<{children: ReactNode}>) => {
+export const ComponentWrapper = ({children, onPress} : Readonly<{children: ReactNode, onPress?: () => void}>) => {
     return (
-        <div className={"relative w-full h-full overflow-y-auto"}>
+        <ScrollShadow onClick={onPress} className={"relative w-full h-full overflow-y-auto space-y-2 pr-3"}>
             {children}
-        </div>
+        </ScrollShadow>
     );
 };
+
+export const WrapperCard = ({ description, title, time, avatarSrc, isEmail }: WrapperCardProps) => {
+    return (
+        <Card fullWidth={true} className={`${isEmail && "cursor-pointer"}`}>
+            <CardBody>
+                <div className={"flex items-center justify-between"}>
+                    <User
+                        className={"font-semibold"}
+                        name={title}
+                        description={description}
+                        avatarProps={{
+                            src: avatarSrc
+                        }}
+                    />
+                    <div className={"text-sm text-gray-500"}>{dateFormat(time)}</div>
+                </div>
+            </CardBody>
+        </Card>
+    );
+}
