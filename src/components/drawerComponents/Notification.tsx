@@ -24,7 +24,7 @@ const notificationData: WrapperCardProps[] = [
 
 export const Notification = () => {
     return (
-        <ComponentWrapper>
+        <ComponentWrapper title={"notification"}>
             {notificationData.map((notification, index) => (
                 <WrapperCard
                     key={index}

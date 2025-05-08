@@ -1,7 +1,6 @@
 import {ComponentWrapper, WrapperCard} from "./Wrapper";
 import {WrapperCardProps} from "&/components/drawerComponents/notification";
 import {IconArrowLeft, IconSend, IconSignature, IconTrash} from "@tabler/icons-react";
-import {UserCard} from "@/components/ui/User";
 import {Button, Input, User} from "@heroui/react";
 
 const notificationData: WrapperCardProps[] = [
@@ -32,6 +31,7 @@ export const Inbox = () => {
                 onPress={() => {
                     console.log("Inbox");
                 }}
+                title={"inbox"}
             >
                 {notificationData.map((notification, index) => (
                     <WrapperCard
@@ -74,8 +74,6 @@ export const Inbox = () => {
                     {...notification}
                 />
             ))}
-
-
             </ComponentWrapper>
             {/*<SelectEmail/>*/}
         </>
@@ -115,5 +113,5 @@ function SelectEmail () {
                 </Button>
             </div>
         </div>
-    )
+    );
 }

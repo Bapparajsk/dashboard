@@ -3,5 +3,7 @@ export interface WrapperCardProps {
     description: string;
     time: Date;
     avatarSrc: string;
-    isEmail?: boolean
+    isInboxCard?: boolean
+    isOnline?: boolean
+    onPress?: () => void
 }
