@@ -6,7 +6,7 @@ import {FilterProps} from "&/components/ui/Filter";
 import {Button} from "@heroui/button";
 import React from "react";
 
-export const Filter = ({ InputProps, TabsProps, className, filterComponent, createNewButton}: FilterProps) => {
+export const Filter = ({ InputProps, TabsProps, className, filterComponent, createNewButton, showBorder = true}: FilterProps) => {
 
     const NewButtonIcon = createNewButton?.icon?.Icon || IconUserPlus;
 
@@ -50,7 +50,7 @@ export const Filter = ({ InputProps, TabsProps, className, filterComponent, crea
                 )}
                 {filterComponent}
             </div>
-            <div className={"w-full h-[1px] bg-gray-600 mt-2"}/>
+            {showBorder && <div className={"w-full h-[1px] bg-gray-600 mt-2"}/>}
         </div>
     );
 };

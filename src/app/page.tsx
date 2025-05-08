@@ -1,13 +1,15 @@
 import {Navbar} from "@/components/navbar";
-import {ApiCard} from "@/components/apiCards";
 import {UserList} from "@/components/user";
 
 const Home = () => {
     return (
-        <div className="flex flex-col h-full">
-            <Navbar />
-            <ApiCard />
-            <UserList />
+        <div className="h-full">
+            <div className={"h-[7%]"}>
+                <Navbar />
+            </div>
+            <div className={"h-[93%]"}>
+                <UserList />
+            </div>
         </div>
     );
 };

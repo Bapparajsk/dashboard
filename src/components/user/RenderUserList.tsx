@@ -6,14 +6,11 @@ import {UserCard} from "@/components/user/UserCard";
 import {useIntersection} from "@mantine/hooks";
 import {useInfiniteQuery} from "@tanstack/react-query";
 import {useUserList} from "@/context/userListContext";
-import {Filter} from "@/components/ui/Filter";
-import {IconMail, IconUserPlus, IconUsers} from "@tabler/icons-react";
 import {parentClickHandler} from "@/lib/clickHandler";
-import {Button} from "@heroui/button";
 
 export const RenderUserList = () => {
 
-    const { fetchUsers, setListTabKeyName, listTabKey, setSelectedUserId, selectedUserId } = useUserList();
+    const { fetchUsers, setSelectedUserId, selectedUserId } = useUserList();
 
     const {
         data,
@@ -62,27 +59,7 @@ export const RenderUserList = () => {
 
     return (
         <div className={"relative w-full h-full overflow-y-scroll scrollbar-hide"} onClick={userClickHandler}>
-            <Filter
-                InputProps={{ placeholder: "Search Users..." }}
-                TabsProps={{
-                    defaultSelectedKey: listTabKey,
-                    onSelectionChange: setListTabKeyName,
-                    size: "md",
-                    tabs: [
-                        { key: "user", title: "Users", Icon: IconUsers },
-                        { key: "email", title: "Email", Icon: IconMail },
-                    ]
-                }}
-                createNewButton={{
-                    icon: { size: 20 },
-                    buttonProps: {
-                        size: "md",
-                        onPress: () => {
-                            console.log("Create new user");
-                        }
-                    }
-                }}
-            />
+
             {
                 users.length > 0 ? (
                     <div className={"grid grid-cols-1 px-3 pt-2"}>

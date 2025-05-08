@@ -16,20 +16,6 @@ const buttonData: ButtonDataType[] = [
         link: "/profile",
     },
     {
-        Icon: IconMail,
-        label: "Emails",
-        onClick: () => {
-            console.log("Emails");
-        }
-    },
-    {
-        Icon: IconBell,
-        label: "Notifications",
-        onClick: () => {
-            console.log("Notifications");
-        }
-    },
-    {
         Icon: IconSettings,
         label: "Setting",
         link: "/setting",

@@ -19,4 +19,5 @@ export interface FilterProps {
         buttonProps?: ButtonProps;
     };
     filterComponent?: ReactNode;
+    showBorder?: boolean;
 }
