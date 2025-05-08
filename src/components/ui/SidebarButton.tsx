@@ -4,7 +4,7 @@ import { Button } from "@heroui/button";
 import { ButtonDataType } from "&/components/ui/SidebarButton";
 import { cn } from "@heroui/react";
 
-export const SidebarButton = ({ Icon, label, link, isDanger, onClick }: ButtonDataType) => {
+export const SidebarButton = ({ Icon, label, link, isDanger, onClick, props }: ButtonDataType) => {
 
     const transform = "transition-transform duration-300 ease-in-out";
 
@@ -20,6 +20,7 @@ export const SidebarButton = ({ Icon, label, link, isDanger, onClick }: ButtonDa
                 "justify-between group ", transform,
                 !isDanger && "text-gray-500 hover:border-gray-300 hover:text-gray-300"
             )}
+            {...props}
         >
             <div className="flex gap-2 items-center">
                 <Icon className={cn("group-hover:scale-[1.2]",  transform)} size={20} />

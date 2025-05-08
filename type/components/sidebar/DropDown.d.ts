@@ -1,6 +1,6 @@
-import React from "react";
 import {AccordionProps} from "@heroui/accordion";
 import {Icon} from "@tabler/icons-react";
+import {ButtonDataType} from "&/components/ui/SidebarButton";
 
 export interface DropDownProps {
     itemList: ItemListType[];
@@ -14,5 +14,5 @@ export interface ItemListType {
         label: string;
     };
     ariaLabel: string;
-    children: React.ReactNode;
+    item: ButtonDataType[];
 }

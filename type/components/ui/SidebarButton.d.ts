@@ -1,4 +1,5 @@
 import {Icon} from "@tabler/icons-react";
+import {ButtonProps} from "@heroui/button";
 
 export interface ButtonDataType {
     Icon: Icon;
@@ -6,4 +7,5 @@ export interface ButtonDataType {
     link?: string;
     isDanger?: boolean;
     onClick?: () => void;
+    props?: ButtonProps
 }

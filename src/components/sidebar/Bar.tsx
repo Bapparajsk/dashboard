@@ -2,7 +2,7 @@
 
 import {UserCard} from "@/components/ui/User";
 import {Emp} from "@/components/skeletons/Emp";
-import {RootUser} from "@/components/sidebar/RootUser";
+import {RootUserButtons} from "@/components/sidebar/RootUserButtons";
 import {useEmpContext} from "@/context/empContext";
 import {SidebarButton} from "@/components/ui/SidebarButton";
 import {IconBell, IconLogout, IconMail, IconSettings, IconUserScan} from "@tabler/icons-react";
@@ -53,7 +53,7 @@ export default function Bar(){
                     </div>
                     <BackButton/>
                 </div>
-                <RootUser/>
+                <RootUserButtons/>
                 <div className={"px-3"}>
                     <div className={"w-full h-full font-semibold pb-1"}>
                         <GetButtons/>
