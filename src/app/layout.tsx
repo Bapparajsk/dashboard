@@ -4,6 +4,7 @@ import { Providers } from "./providers";
 import React from "react";
 import {Sidebar} from "@/components/sidebar";
 import {NuqsProvider} from "@/app/NuqsProvider";
+import {Navbar} from "@/components/navbar";
 
 
 export const metadata: Metadata = {
@@ -25,7 +26,12 @@ export default function RootLayout({
                   <Sidebar />
                   <main className={"flex-1 w-full h-screen p-2"}>
                       <div className={"w-full h-full border border-gray-600 overflow-hidden rounded-md"}>
-                          {children}
+                          <div className={"h-[7%]"}>
+                              <Navbar />
+                          </div>
+                          <div className={"w-full h-[93%]"}>
+                              {children}
+                          </div>
                       </div>
                   </main>
                 </div>

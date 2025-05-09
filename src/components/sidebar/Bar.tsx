@@ -5,7 +5,7 @@ import {Emp} from "@/components/skeletons/Emp";
 import {RootUserButtons} from "@/components/sidebar/RootUserButtons";
 import {useEmpContext} from "@/context/empContext";
 import {SidebarButton} from "@/components/ui/SidebarButton";
-import {IconBell, IconLogout, IconMail, IconSettings, IconUserScan} from "@tabler/icons-react";
+import {IconLogout, IconSettings, IconUserScan} from "@tabler/icons-react";
 import BackButton from "@/components/ui/BackButton";
 import {ButtonDataType} from "&/components/sidebar/bar";
 

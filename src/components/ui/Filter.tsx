@@ -11,7 +11,7 @@ export const Filter = ({ InputProps, TabsProps, className, filterComponent, crea
     const NewButtonIcon = createNewButton?.icon?.Icon || IconUserPlus;
 
     return (
-        <div className={cn("w-full h-fit sticky top-0 bg-black z-30 pt-2", className)}>
+        <div className={cn("w-full h-fit bg-black z-30 py-2", showBorder && "border-b border-gray-600", className)}>
             <div className={"w-full h-full px-3 flex justify-between items-center gap-2"}>
                 <div className={"w-full"}>
                     <Input
@@ -50,7 +50,6 @@ export const Filter = ({ InputProps, TabsProps, className, filterComponent, crea
                 )}
                 {filterComponent}
             </div>
-            {showBorder && <div className={"w-full h-[1px] bg-gray-600 mt-2"}/>}
         </div>
     );
 };

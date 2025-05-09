@@ -16,7 +16,6 @@ const idTracker: IDTrackerType = {
 };
 
 export const EmployeeList = () => {
-    const [filter, setFilter] = useState<Key>("all"); // Store selected filter
     const { fetchEmployees, selectedEmployeeId, selectEmployeeId } = useEmpContext();
 
     const {
@@ -48,11 +47,6 @@ export const EmployeeList = () => {
     const employees = data?.pages.flatMap((page) => page.employees) || [];
 
     // Apply filter
-    const filteredEmployees = employees.filter((employee) => {
-        if (filter === "all") return true;
-        if (filter === "online") return employee.isOnline; // Assuming `isOnline` is a boolean property
-        return false;
-    });
 
     const employeeClickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
         const id = parentClickHandler({ e, ...idTracker });
@@ -64,36 +58,10 @@ export const EmployeeList = () => {
     return (
         <div className={"w-full h-full pt-2"}>
             <div className={"h-full overflow-x-hidden overflow-y-auto scrollbar-hide"} onClick={employeeClickHandler}>
-                <Filter
-                    className={"mb-2"}
-                    InputProps={{
-                        placeholder: "Search Employees...",
-                        onChange: (value) => console.log(value),
-                        onSubmit: (value) => console.log(value)
-                    }}
-                    TabsProps={{
-                        defaultSelectedKey: "all",
-                        onSelectionChange: (key: Key) => {
-                            console.log(key);
-                            setFilter(key);
-                        },
-                        tabs: [
-                            { key: "all", title: "All", Icon: () => <div/> },
-                            { key: "online", title: "Online", Icon: () => <div/> },
-                        ]
-                    }}
-                    createNewButton={{
-                        buttonProps: {
-                            size: "sm",
-                            onPress: () => console.log("Create New Employee"),
-                        }
-                    }}
-                />
-
                 {
-                    filteredEmployees.length > 0 ? (
+                    employees.length > 0 ? (
                         <div className={"grid grid-cols-1 px-3"}>
-                            {filteredEmployees.map((employee, idx) => (
+                            {employees.map((employee, idx) => (
                                 <EmployeeCard
                                     key={idx}
                                     {...employee}

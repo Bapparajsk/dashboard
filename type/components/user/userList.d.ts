@@ -5,3 +5,7 @@ export interface TabDataType {
     title: string;
     key: string;
 }
+
+export interface UserListProps {
+    isEmployee?: boolean;
+}

@@ -4,7 +4,7 @@ import {UserCard} from "@/components/ui/User";
 
 export const Logs = () => {
     return (
-        <div className={"w-full h-full"}>
+        <div className={"w-full h-full py-2 flex flex-col"}>
             <Filter
                 InputProps={{
                     placeholder: "Search logs...",
@@ -14,10 +14,11 @@ export const Logs = () => {
                 }}
                 filterComponent={<DropdownComponent/>}
             />
-            <div className={"w-full h-[89%] space-y-2 p-2 overflow-y-scroll scrollbar-hide"}>
+            <div className={"w-full h-full space-y-2 px-2 pt-2 overflow-y-scroll scrollbar-hide"}>
                 {Array.from({ length: 26}, (_, index) => (
                     <LogListItem key={index} idx={index}/>
                 ))}
+
             </div>
         </div>
     );
