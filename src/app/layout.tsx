@@ -25,11 +25,9 @@ export default function RootLayout({
                 <div className={"flex"}>
                   <Sidebar />
                   <main className={"flex-1 w-full h-screen p-2"}>
-                      <div className={"w-full h-full border border-gray-600 overflow-hidden rounded-md"}>
-                          <div className={"h-[7%]"}>
-                              <Navbar />
-                          </div>
-                          <div className={"w-full h-[93%]"}>
+                      <div className={"w-full h-full border flex flex-col border-gray-600 overflow-hidden rounded-md"}>
+                          <Navbar />
+                          <div className={"w-full h-full flex-1 overflow-hidden"}>
                               {children}
                           </div>
                       </div>
